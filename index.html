@@ -3,966 +3,2700 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AP90 — Planeje. Estude. Aprove. | Ferramentas para concurso público</title>
+<title>APROVAÇÃO 90 (A90) — O Ecossistema Estratégico para Concursos Públicos</title>
 
-<!-- ============ SEO / SOCIAL ============ -->
-<meta name="description" content="E-books e template Notion feitos por quem estuda para concurso público. Método, organização e constância — sem promessa vazia.">
+<!-- ============ SEO & SOCIAL META ============ -->
+<meta name="description" content="O Ecossistema A90: método de planejamento, engenharia reversa de questões, central Notion e IA para aprovação em concursos públicos. Menos de 2% do valor dos cursinhos tradicionais.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="AP90 — Planeje. Estude. Aprove.">
-<meta property="og:description" content="Ferramentas reais para organizar seus estudos para concurso público.">
+<meta property="og:title" content="APROVAÇÃO 90 — O Ecossistema Estratégico para Concursos">
+<meta property="og:description" content="Não estude mais. Estude com estratégia. Conheça a preparação integrada com Método AP90, Engenharia Reversa e Central Notion.">
 <meta property="og:image" content="logo-ap90.jpg">
 <meta property="og:locale" content="pt_BR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#080B09">
+<meta name="theme-color" content="#05060B">
 <link rel="icon" type="image/jpeg" href="favicon.jpg">
 
+<!-- ============ TYPOGRAPHY ============ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-<!-- ============ ANALYTICS (descomente e configure) ============
-<script defer data-domain="seudominio.com" src="https://plausible.io/js/script.js"></script>
--->
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@300;400;500;600;700;800&family=Unbounded:wght@500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-  :root{
-    --bg-void: #080B09;
-    --bg-panel: #10160F;
-    --bg-panel-alt: #0C1210;
-    --border: #1D2822;
-    --border-bright: #2A3A31;
-    --green: #3EFF8B;
-    --green-dim: #1E7A47;
-    --green-soft: rgba(62,255,139,0.1);
-    --text: #EAF1EC;
-    --text-muted: #8FA096;
-    --text-faint: #7A877E; /* corrigido: 4,89:1 sobre painel (passa WCAG AA) */
-    --amber: #E8B84B;
-    --font-display: 'Space Grotesk', sans-serif;
-    --font-body: 'Inter', sans-serif;
+  /* ==========================================================================
+     A90 DESIGN SYSTEM & DESIGN TOKENS
+     ========================================================================== */
+  :root {
+    --bg-primary: #05060B;
+    --bg-secondary: #0B0E14;
+    --bg-stage-alt: #10131A;
+    --bg-elevated: #151922;
+    --bg-card: rgba(16, 19, 26, 0.85);
+
+    --text-primary: #F5F7FA;
+    --text-secondary: #A7AFBD;
+    --text-muted: #737D8D;
+
+    --accent-primary: #A3E635; /* Electric Lime */
+    --accent-secondary: #84CC16;
+    --accent-deep: #65A30D;
+    --accent-glow: rgba(163, 230, 53, 0.22);
+    --accent-soft: rgba(163, 230, 53, 0.08);
+
+    --border-hairline: rgba(245, 247, 250, 0.14);
+    --border-subtle: rgba(245, 247, 250, 0.07);
+    --border-green: rgba(163, 230, 53, 0.75);
+
+    --font-headline: 'Unbounded', sans-serif;
+    --font-body: 'Manrope', sans-serif;
     --font-mono: 'IBM Plex Mono', monospace;
+
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   }
 
-  *{box-sizing:border-box; margin:0; padding:0;}
-
-  html{scroll-behavior:smooth;}
-
-  body{
-    background:var(--bg-void);
-    color:var(--text);
-    font-family:var(--font-body);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
+  /* RESET & BASE */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
-  body::before{
-    content:"";
-    position:fixed; inset:0;
-    background-image: radial-gradient(circle at 1px 1px, rgba(62,255,139,0.05) 1px, transparent 0);
-    background-size: 28px 28px;
-    pointer-events:none;
-    z-index:0;
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
   }
 
-  a{color:inherit; text-decoration:none;}
-  img{max-width:100%; display:block;}
-  button{font-family:inherit;}
-
-  /* FIX ÂNCORAS: compensa o header sticky */
-  section[id]{scroll-margin-top:96px;}
-
-  .wrap{
-    max-width:1180px;
-    margin:0 auto;
-    padding:0 32px;
-    position:relative;
-    z-index:1;
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 
-  /* ---------- status bar ---------- */
-  .statusbar{
-    border-bottom:1px solid var(--border);
-    background:var(--bg-panel-alt);
-    font-family:var(--font-mono);
-    font-size:12px;
-    color:var(--text-faint);
+  a {
+    color: inherit;
+    text-decoration: none;
   }
-  .statusbar .wrap{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:10px 32px;
-    flex-wrap:wrap; gap:8px;
-  }
-  .statusbar .left{display:flex; align-items:center; gap:8px;}
-  .dot{
-    width:6px; height:6px; border-radius:50%;
-    background:var(--amber);
-    box-shadow:0 0 6px var(--amber);
-  }
-  .statusbar .right{display:flex; gap:20px; color:var(--text-faint);}
 
-  /* ---------- header ---------- */
-  header{
-    border-bottom:1px solid var(--border);
-    position:sticky; top:0;
-    background:rgba(8,11,9,0.85);
-    backdrop-filter:blur(10px);
-    z-index:10;
+  img, video {
+    display: block;
+    max-width: 100%;
   }
-  header .wrap{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:18px 32px;
-  }
-  .brand{display:flex; align-items:center; gap:12px;}
-  .brand-mark{
-    width:36px; height:36px;
-    border:1px solid var(--border-bright);
-    border-radius:8px;
-    display:flex; align-items:center; justify-content:center;
-    overflow:hidden;
-    background:var(--bg-panel);
-    flex-shrink:0;
-  }
-  .brand-mark img{
-    width:100%; height:100%; object-fit:cover; display:block;
-  }
-  .brand-name{font-family:var(--font-display); font-weight:600; font-size:17px; letter-spacing:0.3px;}
-  .brand-tag{font-size:11px; color:var(--text-faint); font-family:var(--font-mono);}
 
-  nav.mainnav{display:flex; align-items:center; gap:32px;}
-  nav.mainnav a{
-    font-size:14px; color:var(--text-muted);
-    transition:color .15s ease;
+  button {
+    font-family: inherit;
+    border: none;
+    background: none;
+    cursor: pointer;
   }
-  nav.mainnav a:hover{color:var(--text);}
 
-  /* botão hambúrguer (mobile) */
-  .nav-toggle{
-    display:none;
-    background:none; border:1px solid var(--border-bright); border-radius:8px;
-    width:40px; height:40px; cursor:pointer;
-    flex-direction:column; align-items:center; justify-content:center; gap:5px;
+  /* SCROLLBAR */
+  ::-webkit-scrollbar {
+    width: 8px;
   }
-  .nav-toggle span{display:block; width:18px; height:2px; background:var(--text); transition:transform .2s, opacity .2s;}
-  body.nav-open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-  body.nav-open .nav-toggle span:nth-child(2){opacity:0;}
-  body.nav-open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  ::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1C2330;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-deep);
+  }
 
-  .btn{
-    display:inline-flex; align-items:center; gap:8px;
-    padding:10px 18px;
-    border-radius:8px;
-    font-size:14px; font-weight:500;
-    cursor:pointer;
-    border:1px solid transparent;
-    transition:filter .15s ease, background .15s ease;
-  }
-  .btn-primary{
-    background:var(--green);
-    color:#06120A;
-    font-weight:600;
-  }
-  .btn-primary:hover{filter:brightness(1.1);}
-  .btn-ghost{
-    border:1px solid var(--border-bright);
-    color:var(--text);
-    background:transparent;
-  }
-  .btn-ghost:hover{border-color:var(--green-dim);}
-
-  /* ---------- hero ---------- */
-  .hero{
-    padding:96px 0 80px;
-    border-bottom:1px solid var(--border);
-  }
-  .hero .wrap{
-    display:grid;
-    grid-template-columns:1.15fr 0.85fr;
-    gap:64px;
-    align-items:center;
-  }
-  .eyebrow{
-    display:inline-flex; align-items:center; gap:8px;
-    font-family:var(--font-mono); font-size:12px;
-    color:var(--green);
-    border:1px solid var(--green-dim);
-    background:var(--green-soft);
-    padding:6px 12px;
-    border-radius:6px;
-    margin-bottom:24px;
-  }
-  h1.headline{
-    font-family:var(--font-display);
-    font-size:56px;
-    line-height:1.08;
-    font-weight:600;
-    letter-spacing:-0.5px;
-    margin-bottom:24px;
-  }
-  h1.headline .accent{color:var(--green);}
-  .hero-copy{
-    font-size:17px;
-    color:var(--text-muted);
-    max-width:46ch;
-    margin-bottom:36px;
-  }
-  .hero-ctas{display:flex; gap:14px; margin-bottom:44px; flex-wrap:wrap;}
-  .hero-honesty{
-    display:flex; gap:14px;
-    padding:16px 18px;
-    border:1px solid var(--border);
-    border-radius:10px;
-    background:var(--bg-panel);
-    max-width:52ch;
-  }
-  .hero-honesty .mark{
-    color:var(--amber); flex-shrink:0;
-    width:20px; height:20px; border:1px solid var(--amber); border-radius:50%;
-    display:flex; align-items:center; justify-content:center;
-    font-family:var(--font-mono); font-size:12px; line-height:1;
-  }
-  .hero-honesty p{font-size:13.5px; color:var(--text-muted);}
-  .hero-honesty strong{color:var(--text); font-weight:600;}
-
-  .hero-panel{
-    border:1px solid var(--border-bright);
-    border-radius:14px;
-    background:var(--bg-panel);
-    padding:22px;
-  }
-  .hero-panel-head{
-    display:flex; justify-content:space-between; align-items:center;
-    font-family:var(--font-mono); font-size:11px; color:var(--text-faint);
-    margin-bottom:18px;
-    text-transform:uppercase; letter-spacing:0.5px;
-  }
-  .flight-phases{display:flex; flex-direction:column; gap:2px;}
-  .phase{
-    display:flex; align-items:center; gap:12px;
-    padding:12px 10px;
-    border-radius:8px;
-    border-left:2px solid transparent;
-  }
-  .phase.active{
-    background:var(--green-soft);
-    border-left:2px solid var(--green);
-  }
-  .phase-dot{width:7px; height:7px; border-radius:50%; background:var(--border-bright); flex-shrink:0;}
-  .phase.active .phase-dot{background:var(--green); box-shadow:0 0 6px var(--green);}
-  .phase-label{font-size:13.5px; color:var(--text-muted);}
-  .phase.active .phase-label{color:var(--text); font-weight:500;}
-  .phase-sub{font-size:11.5px; color:var(--text-faint); margin-left:auto; font-family:var(--font-mono);}
-
-  /* ---------- sections generic ---------- */
-  section{padding:80px 0; border-bottom:1px solid var(--border);}
-  .section-head{
-    display:flex; justify-content:space-between; align-items:flex-end;
-    margin-bottom:44px;
-    gap:24px; flex-wrap:wrap;
-  }
-  .section-label{
-    font-family:var(--font-mono); font-size:12px;
-    color:var(--green); letter-spacing:0.5px;
-    margin-bottom:10px;
-  }
-  h2.section-title{
-    font-family:var(--font-display);
-    font-size:32px;
-    font-weight:600;
-    letter-spacing:-0.3px;
-  }
-  .section-desc{color:var(--text-muted); font-size:15px; max-width:44ch;}
-
-  /* ---------- produtos ---------- */
-  .product-grid{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:18px;
-  }
-  .card{
-    border:1px solid var(--border);
-    background:var(--bg-panel);
-    border-radius:12px;
-    padding:26px;
-    display:flex; flex-direction:column;
-    min-height:280px;
-    cursor:pointer;
-    transition:border-color .15s ease, transform .15s ease;
-    text-align:left;
-    color:inherit;
-    font:inherit;
-    width:100%;
-  }
-  .card-cover{
+  /* LAYOUT CONTAINERS */
+  .container {
     width: 100%;
-    height: 190px;
-    border-radius: 8px;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 28px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .container-narrow {
+    max-width: 960px;
+  }
+
+  /* TYPOGRAPHY UTILITIES */
+  .mono-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-primary);
+    background: var(--accent-soft);
+    border: 1px solid rgba(163, 230, 53, 0.3);
+    padding: 6px 14px;
+    border-radius: 4px;
+  }
+
+  .mono-badge .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--accent-primary);
+    box-shadow: 0 0 8px var(--accent-primary);
+    animation: pulseDot 2s infinite ease-in-out;
+  }
+
+  @keyframes pulseDot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  .section-tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-primary);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .headline-display {
+    font-family: var(--font-headline);
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    color: var(--text-primary);
+    line-height: 1.15;
+  }
+
+  .accent-green {
+    color: var(--accent-primary);
+  }
+
+  /* BUTTONS */
+  .btn-a90 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: var(--accent-primary);
+    color: #05060B;
+    font-family: var(--font-headline);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    padding: 18px 34px;
+    border-radius: 4px;
+    border: 1px solid var(--accent-primary);
+    transition: all 0.25s var(--ease-out);
+    position: relative;
     overflow: hidden;
-    margin-bottom: 16px;
-    background: var(--bg-void);
-    border: 1px solid var(--border);
+    cursor: pointer;
+  }
+
+  .btn-a90::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+
+  .btn-a90:hover {
+    background: #B5F043;
+    box-shadow: 0 0 32px var(--accent-glow);
+    transform: translateY(-2px);
+  }
+
+  .btn-a90:hover::after {
+    transform: translateX(100%);
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-hairline);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 16px 28px;
+    border-radius: 4px;
+    transition: all 0.25s ease;
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    background: var(--accent-soft);
+  }
+
+  /* ==========================================================================
+     NAVBAR
+     ========================================================================== */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(5, 6, 11, 0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border-subtle);
+    transition: all 0.3s ease;
+  }
+
+  .navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+
+  .brand-lockup {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .brand-logo-img {
+    width: 38px;
+    height: 38px;
+    border-radius: 6px;
+    object-fit: cover;
+    border: 1px solid var(--border-hairline);
+  }
+
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .brand-title {
+    font-family: var(--font-headline);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .brand-title span {
+    color: var(--accent-primary);
+  }
+
+  .brand-sub {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--accent-primary);
+  }
+
+  .nav-cta-btn {
+    padding: 10px 20px;
+    font-size: 12px;
+    border-radius: 4px;
+  }
+
+  /* ==========================================================================
+     PINNED SCROLL STAGE 1: CINEMATIC A90 HERO (300svh)
+     ========================================================================== */
+  .pinned-stage {
+    position: relative;
+    width: 100%;
+  }
+
+  .stage-hero {
+    height: 300svh;
+  }
+
+  .sticky-viewport {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    width: 100%;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .card-cover img{
+
+  .hero-canvas {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    transition: transform .25s ease;
-  }
-  .card:hover .card-cover img{
-    transform: scale(1.03);
-  }
-  .card-format{
-    font-family:var(--font-mono); font-size:11px;
-    color:var(--text-faint);
-    text-transform:uppercase; letter-spacing:0.5px;
-    margin-bottom:16px;
-    display:flex; align-items:center; gap:8px;
-  }
-  .card-format .sq{width:6px; height:6px; background:var(--green-dim); border-radius:1px;}
-  .card h3{
-    font-family:var(--font-display);
-    font-size:19px; font-weight:600;
-    margin-bottom:10px;
-  }
-  .card p.desc{
-    font-size:13.5px; color:var(--text-muted);
-    margin-bottom:24px;
-    flex-grow:1;
-  }
-  .card-footer{
-    display:flex; align-items:center; justify-content:space-between;
-    padding-top:18px;
-    border-top:1px solid var(--border);
-  }
-  .card-cta{font-size:13.5px; color:var(--green); font-weight:500;}
-  .card-price{font-family:var(--font-mono); font-size:13px; color:var(--text);}
-
-  /* card de captura (em breve / newsletter) */
-  .card.capture{
-    justify-content:center;
-    border-style:solid;
-    background:linear-gradient(160deg, var(--green-soft), transparent 55%), var(--bg-panel);
-  }
-  .card.capture h3{color:var(--text);}
-  .lead-form{display:flex; flex-direction:column; gap:10px; margin-top:6px;}
-  .lead-form input{
-    background:var(--bg-void);
-    border:1px solid var(--border-bright);
-    border-radius:8px;
-    padding:11px 14px;
-    color:var(--text);
-    font-size:14px;
-    font-family:var(--font-body);
-    width:100%;
-  }
-  .lead-form input:focus{outline:none; border-color:var(--green-dim);}
-  .lead-form input::placeholder{color:var(--text-faint);}
-  .lead-success{
-    font-size:13.5px; color:var(--green);
-    font-family:var(--font-mono);
-    display:none;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    opacity: 0.85;
+    z-index: 1;
   }
 
-  /* ---------- diferenciais ---------- */
-  .diff-grid{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:1px;
-    background:var(--border);
-    border:1px solid var(--border);
-    border-radius:12px;
-    overflow:hidden;
+  .hero-grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(245, 247, 250, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245, 247, 250, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 1;
   }
-  .diff-item{background:var(--bg-void); padding:28px 26px;}
-  .diff-item .num{font-family:var(--font-mono); font-size:12px; color:var(--green-dim); margin-bottom:14px;}
-  .diff-item h4{font-family:var(--font-display); font-size:16px; font-weight:600; margin-bottom:10px;}
-  .diff-item p{font-size:13.5px; color:var(--text-muted);}
 
-  /* ---------- blog / lista ---------- */
-  .topic-chips{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:32px;}
-  .chip{
-    font-family:var(--font-mono); font-size:11.5px;
-    color:var(--text-muted);
-    border:1px solid var(--border-bright);
-    padding:6px 12px;
-    border-radius:20px;
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    max-width: 980px;
+    padding: 100px 20px 40px;
+    transform: translateY(calc(var(--hero-scroll-lift, 0px) * -1));
+    opacity: var(--hero-scroll-opacity, 1);
+    transition: transform 0.1s linear, opacity 0.1s linear;
   }
-  .lead-panel{
-    display:grid;
-    grid-template-columns:1.1fr 0.9fr;
-    gap:40px;
-    align-items:center;
-    border:1px solid var(--border-bright);
-    border-radius:12px;
-    background:var(--bg-panel);
-    padding:34px;
-  }
-  .lead-panel h3{
-    font-family:var(--font-display);
-    font-size:21px; font-weight:600;
-    margin-bottom:10px;
-  }
-  .lead-panel p{font-size:14px; color:var(--text-muted); max-width:42ch;}
-  .lead-panel .lead-form{max-width:380px; justify-self:end; width:100%;}
 
-  /* ---------- sobre ---------- */
-  .about-wrap{
-    display:grid;
-    grid-template-columns:0.9fr 1.1fr;
-    gap:56px;
-    align-items:start;
+  .hero-headline {
+    font-size: clamp(28px, 4.6vw, 54px);
+    margin: 22px 0 18px;
+    letter-spacing: -0.055em;
   }
-  .about-wrap h2.section-title{margin-bottom:20px;}
-  .about-body p{font-size:15px; color:var(--text-muted); margin-bottom:16px; max-width:48ch;}
-  .about-body strong{color:var(--text);}
-  .log-panel{
-    border:1px solid var(--border);
-    border-radius:12px;
-    background:var(--bg-panel);
-    padding:20px 22px;
-    font-family:var(--font-mono);
-    font-size:12.5px;
-  }
-  .log-panel .log-head{color:var(--text-faint); margin-bottom:14px; text-transform:uppercase; letter-spacing:0.5px; font-size:11px;}
-  .log-line{display:flex; gap:10px; padding:7px 0; border-top:1px solid var(--border); color:var(--text-muted);}
-  .log-line:first-of-type{border-top:none;}
-  .log-line .lg{color:var(--green); flex-shrink:0;}
 
-  /* ---------- cta final ---------- */
-  .final-cta{
-    text-align:center;
-    padding:90px 0;
-    border-bottom:none;
+  .hero-subheadline {
+    font-size: clamp(15px, 1.8vw, 18px);
+    color: var(--text-secondary);
+    max-width: 780px;
+    margin: 0 auto 32px;
+    line-height: 1.65;
   }
-  .final-cta h2{
-    font-family:var(--font-display);
-    font-size:34px; font-weight:600;
-    max-width:20ch; margin:0 auto 18px;
-    letter-spacing:-0.3px;
-  }
-  .final-cta p{color:var(--text-muted); font-size:15px; margin-bottom:32px;}
 
-  /* ---------- footer ---------- */
-  footer{padding:36px 0;}
-  footer .wrap{
-    display:flex; justify-content:space-between; align-items:center;
-    flex-wrap:wrap; gap:16px;
+  .hero-ctas-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
   }
-  footer .foot-left{display:flex; align-items:center; gap:10px;}
-  footer .foot-links{display:flex; gap:24px; font-size:13px; color:var(--text-faint); flex-wrap:wrap;}
-  footer .foot-links a:hover{color:var(--text);}
-  footer .foot-note{font-family:var(--font-mono); font-size:11px; color:var(--text-faint);}
 
-  /* ---------- modal de produto ---------- */
-  .modal-backdrop{
-    position:fixed; inset:0;
-    background:rgba(4,6,5,0.75);
-    backdrop-filter:blur(4px);
-    display:none;
-    align-items:center; justify-content:center;
-    z-index:100;
-    padding:24px;
+  .security-microtext {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
   }
-  .modal-backdrop.open{display:flex;}
-  .modal{
-    background:var(--bg-panel);
-    border:1px solid var(--border-bright);
-    border-radius:14px;
-    max-width:520px; width:100%;
-    max-height:85vh; overflow-y:auto;
-    padding:30px;
-    position:relative;
+
+  .security-microtext span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
-  .modal-close{
-    position:absolute; top:14px; right:14px;
-    background:none; border:1px solid var(--border-bright);
-    color:var(--text-muted); border-radius:8px;
-    width:32px; height:32px; cursor:pointer;
-    font-size:16px; line-height:1;
-  }
-  .modal-close:hover{color:var(--text); border-color:var(--green-dim);}
-  .modal-cover{
-    width: 100%;
-    height: 180px;
-    border-radius: 10px;
+
+  /* CINEMATIC VIDEO & MOCKUP SHOWCASE */
+  .hero-media-showcase {
+    margin-top: 36px;
+    position: relative;
+    border-radius: 12px;
+    border: 1px solid var(--border-hairline);
+    background: #0B0E14;
     overflow: hidden;
-    margin-bottom: 16px;
-    border: 1px solid var(--border-bright);
-    background: var(--bg-void);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.9), 0 0 50px rgba(163, 230, 53, 0.12);
+    width: 100%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .modal-cover img{
+
+  .video-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 18px;
+    background: #0E121A;
+    border-bottom: 1px solid var(--border-subtle);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .window-dots {
+    display: flex;
+    gap: 6px;
+  }
+  .window-dots span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #252D3D;
+  }
+  .window-dots span:nth-child(1) { background: #FF5F56; }
+  .window-dots span:nth-child(2) { background: #FFBD2E; }
+  .window-dots span:nth-child(3) { background: #27C93F; }
+
+  .video-mockup-screen {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: #040508;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  /* SIMULATED SYSTEM PREVIEW ON VIDEO SCREEN */
+  .system-video-canvas {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top;
+  }
+
+  .video-interactive-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 30%, rgba(5,6,11,0.85) 90%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px;
+    z-index: 4;
+  }
+
+  .video-hud-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .video-play-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+  }
+
+  .play-pulse-btn {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    color: #05060B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 0 40px var(--accent-glow);
+    transition: all 0.3s ease;
+  }
+
+  .video-play-center:hover .play-pulse-btn {
+    transform: scale(1.1);
+    background: #B5F043;
+  }
+
+  .play-label {
+    font-family: var(--font-headline);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+  }
+
+  .video-hud-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+
+  .video-progress-bar-wrap {
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 2px;
+    margin: 0 16px;
+    overflow: hidden;
+  }
+
+  .video-progress-fill {
+    width: 62%;
+    height: 100%;
+    background: var(--accent-primary);
+    box-shadow: 0 0 10px var(--accent-primary);
+    animation: simProgress 10s infinite linear;
+  }
+
+  @keyframes simProgress {
+    0% { width: 10%; }
+    50% { width: 75%; }
+    100% { width: 100%; }
+  }
+
+  /* ==========================================================================
+     PINNED SCROLL STAGE 2: LEFT-TO-RIGHT TYPOGRAPHIC REVEAL (280svh)
+     ========================================================================== */
+  .stage-reveal {
+    height: 280svh;
+    background: var(--bg-secondary);
+  }
+
+  .statement-reveal-wrap {
+    text-align: center;
+    max-width: 1080px;
+    padding: 0 24px;
+    position: relative;
+  }
+
+  .statement-base-text {
+    font-family: var(--font-headline);
+    font-size: clamp(32px, 5.2vw, 68px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.06em;
+    color: var(--text-primary);
+    opacity: 0.14;
+    user-select: none;
+  }
+
+  .statement-overlay-text {
+    position: absolute;
+    inset: 0;
+    font-family: var(--font-headline);
+    font-size: clamp(32px, 5.2vw, 68px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.06em;
+    color: var(--text-primary);
+    clip-path: inset(0 calc(100% - var(--reveal-p, 0) * 100%) 0 0);
+    will-change: clip-path;
+  }
+
+  .statement-overlay-text .highlight {
+    color: var(--accent-primary);
+    text-shadow: 0 0 35px var(--accent-glow);
+  }
+
+  .reveal-rule-line {
+    width: calc(var(--reveal-p, 0) * 100%);
+    max-width: 820px;
+    height: 3px;
+    background: var(--accent-primary);
+    box-shadow: 0 0 20px var(--accent-primary);
+    margin: 28px auto 20px;
+    border-radius: 2px;
+    transition: width 0.05s linear;
+  }
+
+  .statement-subtext {
+    font-family: var(--font-body);
+    font-size: clamp(14px, 1.6vw, 17px);
+    color: var(--text-secondary);
+    max-width: 720px;
+    margin: 0 auto;
+    opacity: calc(var(--reveal-p, 0) * 1.2);
+  }
+
+  /* ==========================================================================
+     SECTION 2 & 3: CHOQUE DE REALIDADE (A DOR) & AUTORIDADE
+     ========================================================================== */
+  .section-pain {
+    padding: 120px 0 100px;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .pain-header {
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto 64px;
+  }
+
+  .pain-title {
+    font-size: clamp(26px, 3.8vw, 44px);
+    margin-bottom: 18px;
+  }
+
+  .pain-subtitle {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .pain-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  .pain-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-hairline);
+    border-radius: 8px;
+    padding: 34px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  .pain-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 95, 86, 0.4);
+  }
+
+  .pain-card-icon {
+    font-size: 28px;
+    margin-bottom: 18px;
     display: block;
   }
-  .modal .card-format{margin-bottom:12px;}
-  .modal h3{
-    font-family:var(--font-display);
-    font-size:24px; font-weight:600;
-    margin-bottom:12px;
-  }
-  .modal .modal-desc{font-size:14.5px; color:var(--text-muted); margin-bottom:20px;}
-  .modal ul{list-style:none; margin-bottom:22px;}
-  .modal ul li{
-    font-size:13.5px; color:var(--text-muted);
-    padding:7px 0; border-top:1px solid var(--border);
-    display:flex; gap:10px;
-  }
-  .modal ul li::before{content:"→"; color:var(--green); flex-shrink:0;}
-  .modal-price-row{
-    display:flex; align-items:baseline; gap:12px;
-    margin-bottom:8px;
-  }
-  .modal-price{
-    font-family:var(--font-display);
-    font-size:30px; font-weight:700; color:var(--green);
-  }
-  .modal-price-note{font-size:12px; color:var(--text-faint); font-family:var(--font-mono);}
-  .modal .btn{width:100%; justify-content:center; margin-top:16px; padding:13px;}
-  .modal-guarantee{
-    font-size:12px; color:var(--text-faint);
-    text-align:center; margin-top:12px;
+
+  .pain-card-badge {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.15em;
+    color: #FF7B72;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
   }
 
-  @media (max-width: 860px){
-    .hero .wrap{grid-template-columns:1fr;}
-    h1.headline{font-size:38px;}
-    .product-grid, .diff-grid{grid-template-columns:1fr;}
-    .about-wrap{grid-template-columns:1fr;}
-    .statusbar .right{display:none;}
-    .lead-panel{grid-template-columns:1fr;}
-    .lead-panel .lead-form{justify-self:stretch; max-width:none;}
+  .pain-card-title {
+    font-family: var(--font-headline);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
 
-    /* nav mobile: hambúrguer + painel suspenso */
-    .nav-toggle{display:flex;}
-    nav.mainnav{
-      display:none;
-      position:absolute;
-      top:100%; left:0; right:0;
-      flex-direction:column;
-      align-items:stretch;
-      gap:0;
-      background:var(--bg-panel-alt);
-      border-bottom:1px solid var(--border);
-      padding:8px 32px 16px;
-    }
-    body.nav-open nav.mainnav{display:flex;}
-    nav.mainnav a{padding:12px 0; border-top:1px solid var(--border); font-size:15px;}
+  .pain-card-desc {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  /* STATS / AUTORIDADE BAR */
+  .authority-stats-band {
+    background: #0B0E14;
+    border: 1px solid var(--border-hairline);
+    border-radius: 8px;
+    padding: 36px 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+
+  .stat-block {
+    text-align: center;
+    border-right: 1px solid var(--border-subtle);
+  }
+
+  .stat-block:last-child {
+    border-right: none;
+  }
+
+  .stat-number {
+    font-family: var(--font-headline);
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--accent-primary);
+    letter-spacing: -0.06em;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+  }
+
+  /* ==========================================================================
+     PINNED SCROLL STAGE 3: SYNCHRONIZED STUDY PROGRESS CURVE (380svh)
+     ========================================================================== */
+  .stage-curve {
+    height: 380svh;
+    background: var(--bg-stage-alt);
+  }
+
+  .curve-split-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  .curve-left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .curve-step-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 16px 20px;
+    border-radius: 6px;
+    border-left: 2px solid transparent;
+    opacity: 0.28;
+    transition: all 0.35s ease;
+    background: rgba(255, 255, 255, 0.01);
+  }
+
+  .curve-step-row.active {
+    opacity: 1;
+    background: var(--accent-soft);
+    border-left-color: var(--accent-primary);
+    box-shadow: -10px 0 30px rgba(163, 230, 53, 0.08);
+  }
+
+  .step-num {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--accent-primary);
+  }
+
+  .step-content h4 {
+    font-family: var(--font-headline);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+  }
+
+  .step-content p {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  /* RIGHT CANVAS PLOT */
+  .curve-plot-box {
+    background: #06080E;
+    border: 1px solid var(--border-hairline);
+    border-radius: 10px;
+    padding: 24px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+  }
+
+  .plot-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .plot-canvas-el {
+    width: 100%;
+    height: 240px;
+    display: block;
+  }
+
+  .plot-readout {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .readout-val {
+    font-family: var(--font-headline);
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--accent-primary);
+    letter-spacing: -0.05em;
+  }
+
+  .readout-desc {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+
+  /* ==========================================================================
+     SECTION 4: COMPARATIVO BRUTAL & A METÁFORA DA PIZZA
+     ========================================================================== */
+  .section-anchoring {
+    padding: 120px 0;
+    background: var(--bg-primary);
+  }
+
+  .comparison-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    margin: 50px 0 70px;
+    border: 1px solid var(--border-hairline);
+    border-radius: 8px;
+    background: var(--bg-elevated);
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    min-width: 640px;
+  }
+
+  .comparison-table th, .comparison-table td {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 14.5px;
+  }
+
+  .comparison-table th {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    background: #0E121A;
+  }
+
+  .comparison-table tr.highlight-a90 {
+    background: rgba(163, 230, 53, 0.06);
+  }
+
+  .comparison-table tr.highlight-a90 td {
+    border-bottom: none;
+    font-weight: 600;
+  }
+
+  .comparison-table tr.highlight-a90 td:first-child {
+    color: var(--accent-primary);
+    font-family: var(--font-headline);
+    font-size: 15px;
+  }
+
+  .price-bad {
+    color: #FF7B72;
+    font-family: var(--font-mono);
+    font-weight: 700;
+  }
+
+  .price-a90 {
+    color: var(--accent-primary);
+    font-family: var(--font-headline);
+    font-size: 20px;
+    font-weight: 800;
+  }
+
+  /* PIZZA METAPHOR DUAL CARD */
+  .pizza-metaphor-box {
+    background: #0B0E14;
+    border: 1px solid var(--border-hairline);
+    border-radius: 12px;
+    padding: 44px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pizza-metaphor-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .pizza-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 32px;
+  }
+
+  .pizza-card {
+    padding: 30px;
+    border-radius: 8px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .pizza-card.winner {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 30px rgba(163, 230, 53, 0.1);
+  }
+
+  .pizza-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+
+  .pizza-card h3 {
+    font-family: var(--font-headline);
+    font-size: 20px;
+    letter-spacing: -0.04em;
+    margin-bottom: 8px;
+  }
+
+  .pizza-price-tag {
+    font-family: var(--font-mono);
+    font-size: 26px;
+    font-weight: 700;
+  }
+
+  .pizza-card ul {
+    list-style: none;
+    margin-top: 16px;
+  }
+
+  .pizza-card ul li {
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .pizza-card ul li:last-child {
+    border-bottom: none;
+  }
+
+  /* ==========================================================================
+     PINNED SCROLL STAGE 4: GEOMETRIC CONVERGENCE & FECHAMENTO (300svh)
+     ========================================================================== */
+  .stage-convergence {
+    height: 300svh;
+    background: var(--bg-secondary);
+  }
+
+  .convergence-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    opacity: 0.9;
+  }
+
+  .convergence-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    max-width: 860px;
+    padding: 0 24px;
+  }
+
+  .convergence-headline {
+    font-size: clamp(26px, 4vw, 46px);
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+
+  /* ==========================================================================
+     SECTION 5: OS 4 PILARES DA METODOLOGIA A90
+     ========================================================================== */
+  .section-method {
+    padding: 120px 0;
+    background: var(--bg-stage-alt);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 50px;
+  }
+
+  .pillar-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-hairline);
+    border-radius: 8px;
+    padding: 30px 24px;
+    transition: all 0.25s ease;
+  }
+
+  .pillar-card:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-4px);
+  }
+
+  .pillar-num {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent-primary);
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .pillar-card h3 {
+    font-family: var(--font-headline);
+    font-size: 18px;
+    letter-spacing: -0.04em;
+    margin-bottom: 12px;
+  }
+
+  .pillar-card p {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ==========================================================================
+     SECTION 6: PILHA DE VALOR DETALHADA (VITRINE DOS ENTREGÁVEIS)
+     ========================================================================== */
+  .section-products {
+    padding: 120px 0;
+    background: var(--bg-primary);
+  }
+
+  .products-grid-showcase {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-top: 56px;
+  }
+
+  .product-box {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-hairline);
+    border-radius: 10px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    transition: all 0.3s ease;
+  }
+
+  .product-box:hover {
+    border-color: rgba(163, 230, 53, 0.4);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+  }
+
+  .product-box-cover {
+    background: #000;
+    height: 100%;
+    min-height: 240px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-box-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.4s ease;
+  }
+
+  .product-box:hover .product-box-cover img {
+    transform: scale(1.05);
+  }
+
+  .product-box-body {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .product-box-body .format-badge {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--accent-primary);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .product-box-body h3 {
+    font-family: var(--font-headline);
+    font-size: 19px;
+    letter-spacing: -0.04em;
+    margin-bottom: 10px;
+  }
+
+  .product-box-body p {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin-bottom: 16px;
+  }
+
+  .product-box-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-subtle);
+    font-family: var(--font-mono);
+    font-size: 12px;
+  }
+
+  .val-anchor {
+    color: var(--text-muted);
+    text-decoration: line-through;
+  }
+
+  .bonus-showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 32px;
+  }
+
+  .bonus-box {
+    background: #0E121A;
+    border: 1px dashed rgba(163, 230, 53, 0.4);
+    border-radius: 8px;
+    padding: 24px;
+  }
+
+  .bonus-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .bonus-box h4 {
+    font-family: var(--font-headline);
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .bonus-box p {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  /* ==========================================================================
+     SECTION 7: CARD DE OFERTA IRRESISTÍVEL (CHECKOUT)
+     ========================================================================== */
+  .section-offer {
+    padding: 130px 0;
+    background: radial-gradient(circle at center top, rgba(163, 230, 53, 0.08) 0%, var(--bg-primary) 70%);
+  }
+
+  .offer-main-card {
+    max-width: 820px;
+    margin: 0 auto;
+    background: #0B0E14;
+    border: 2px solid var(--accent-primary);
+    border-radius: 14px;
+    padding: 56px 48px;
+    box-shadow: 0 0 80px rgba(163, 230, 53, 0.15), 0 30px 70px rgba(0,0,0,0.9);
+    position: relative;
+    text-align: center;
+  }
+
+  .offer-badge-tag {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent-primary);
+    color: #05060B;
+    font-family: var(--font-headline);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 24px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px var(--accent-glow);
+  }
+
+  .offer-title {
+    font-size: clamp(24px, 3.6vw, 38px);
+    margin: 16px 0 12px;
+  }
+
+  .offer-desc {
+    font-size: 15px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 36px;
+  }
+
+  .pricing-display {
+    margin-bottom: 36px;
+  }
+
+  .pricing-old {
+    font-family: var(--font-mono);
+    font-size: 18px;
+    color: var(--text-muted);
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+
+  .pricing-current {
+    font-family: var(--font-headline);
+    font-size: clamp(48px, 7vw, 76px);
+    font-weight: 800;
+    color: var(--accent-primary);
+    letter-spacing: -0.06em;
+    line-height: 1;
+    margin-bottom: 8px;
+    text-shadow: 0 0 35px var(--accent-glow);
+  }
+
+  .pricing-installments {
+    font-family: var(--font-mono);
+    font-size: 13.5px;
+    color: var(--text-secondary);
+  }
+
+  .offer-checklist {
+    list-style: none;
+    text-align: left;
+    max-width: 620px;
+    margin: 0 auto 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .offer-checklist li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 15px;
+    color: var(--text-primary);
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.02);
+    border-radius: 6px;
+    border: 1px solid var(--border-subtle);
+  }
+
+  .offer-checklist li span.check-icon {
+    color: var(--accent-primary);
+    font-weight: 800;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .offer-cta-btn {
+    width: 100%;
+    max-width: 580px;
+    font-size: 15px;
+    padding: 22px 36px;
+  }
+
+  .guarantee-seal-row {
+    margin-top: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* ==========================================================================
+     SECTION 8 & 9: ANTES E DEPOIS & FAQ
+     ========================================================================== */
+  .section-results {
+    padding: 100px 0;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .transformation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 48px;
+  }
+
+  .transform-card {
+    padding: 36px;
+    border-radius: 10px;
+    border: 1px solid var(--border-hairline);
+  }
+
+  .transform-card.before {
+    background: rgba(255, 95, 86, 0.03);
+    border-color: rgba(255, 95, 86, 0.2);
+  }
+
+  .transform-card.after {
+    background: rgba(163, 230, 53, 0.04);
+    border-color: rgba(163, 230, 53, 0.35);
+  }
+
+  .transform-card h4 {
+    font-family: var(--font-headline);
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .transform-card ul {
+    list-style: none;
+  }
+
+  .transform-card ul li {
+    padding: 12px 0;
+    font-size: 14.5px;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    gap: 12px;
+  }
+
+  /* FAQ ACCORDION */
+  .section-faq {
+    padding: 120px 0;
+    background: var(--bg-primary);
+  }
+
+  .faq-accordion-wrap {
+    max-width: 820px;
+    margin: 48px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  details.faq-item {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-hairline);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+  }
+
+  details.faq-item[open] {
+    border-color: var(--accent-primary);
+  }
+
+  summary.faq-question {
+    padding: 22px 26px;
+    font-family: var(--font-headline);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+  }
+
+  summary.faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  summary.faq-question .toggle-indicator {
+    font-family: var(--font-mono);
+    font-size: 20px;
+    color: var(--accent-primary);
+    transition: transform 0.25s ease;
+  }
+
+  details[open] summary.faq-question .toggle-indicator {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    padding: 0 26px 24px;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* ==========================================================================
+     SECTION 10: FINAL ANCHOR CTA & FOOTER
+     ========================================================================== */
+  .section-final-cta {
+    padding: 110px 0;
+    background: #07090F;
+    border-top: 1px solid var(--border-subtle);
+    text-align: center;
+  }
+
+  .final-cta-box {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  .final-headline {
+    font-size: clamp(26px, 4vw, 44px);
+    margin-bottom: 20px;
+  }
+
+  .final-sub {
+    font-size: 16px;
+    color: var(--text-secondary);
+    max-width: 680px;
+    margin: 0 auto 36px;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 60px 0 40px;
+    background: #040508;
+    border-top: 1px solid var(--border-subtle);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .footer-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-links a:hover {
+    color: var(--accent-primary);
+  }
+
+  /* RESPONSIVE BREAKPOINTS */
+  @media (max-width: 992px) {
+    .nav-links { display: none; }
+    .pain-cards-grid { grid-template-columns: 1fr; }
+    .authority-stats-band { grid-template-columns: 1fr 1fr; }
+    .stat-block:nth-child(2) { border-right: none; }
+    .curve-split-grid { grid-template-columns: 1fr; }
+    .pillars-grid { grid-template-columns: 1fr 1fr; }
+    .products-grid-showcase { grid-template-columns: 1fr; }
+    .bonus-showcase-grid { grid-template-columns: 1fr; }
+    .pizza-grid { grid-template-columns: 1fr; }
+    .transformation-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .container { padding: 0 18px; }
+    .hero-content { padding-top: 80px; }
+    .authority-stats-band { grid-template-columns: 1fr; }
+    .stat-block { border-right: none; border-bottom: 1px solid var(--border-subtle); padding-bottom: 16px; }
+    .pillars-grid { grid-template-columns: 1fr; }
+    .product-box { grid-template-columns: 1fr; }
+    .product-box-cover { height: 200px; min-height: auto; }
+    .offer-main-card { padding: 40px 20px; }
+    .pricing-current { font-size: 52px; }
   }
 </style>
 </head>
 <body>
 
-  <div class="statusbar">
-    <div class="wrap">
-      <div class="left">
-        <span class="dot"></span>
-        <span>SISTEMA AP90 — EM CONSTRUÇÃO ATIVA</span>
-      </div>
-      <div class="right">
-        <span>PRODUTOS: 3 DISPONÍVEIS</span>
-        <span>ACESSO IMEDIATO APÓS A COMPRA</span>
-      </div>
-    </div>
-  </div>
-
-  <header>
-    <div class="wrap">
-      <div class="brand">
-        <div class="brand-mark">
-          <img src="logo-ap90.jpg" alt="Logo AP90">
+  <!-- ==================== NAVBAR ==================== -->
+  <header class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="brand-lockup">
+        <img src="logo-ap90.jpg" alt="A90 Logo" class="brand-logo-img">
+        <div class="brand-text">
+          <div class="brand-title">APROVAÇÃO <span>90</span></div>
+          <div class="brand-sub">Ecossistema de Elite</div>
         </div>
-        <div>
-          <div class="brand-name">AP90</div>
-          <div class="brand-tag">Aprovação em Alta Performance</div>
-        </div>
-      </div>
-      <nav class="mainnav" id="mainnav">
-        <a href="#produtos">Produtos</a>
-        <a href="#diferenciais">Como pensamos</a>
-        <a href="#lista">Novidades</a>
-        <a href="#sobre">Sobre</a>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#metodo">O Método</a></li>
+          <li><a href="#problema">O Choque</a></li>
+          <li><a href="#comparativo">Comparativo</a></li>
+          <li><a href="#entregaveis">Conteúdo</a></li>
+          <li><a href="#resultados">Resultados</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
       </nav>
-      <div style="display:flex; align-items:center; gap:10px;">
-        <a href="#produtos" class="btn btn-primary">Ver produtos</a>
-        <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainnav">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+      <a href="#oferta" class="btn-a90 nav-cta-btn">Acessar por R$ 57,90</a>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="wrap">
-      <div>
-        <span class="eyebrow">Construído por quem estuda para concurso</span>
-        <h1 class="headline">Planeje. Estude. <span class="accent">Aprove.</span></h1>
-        <p class="hero-copy">
-          AP90 é um conjunto de ferramentas simples para organizar o estudo pra concurso público —
-          nascido da tentativa de resolver um problema real: estudar bem com pouco tempo livre.
-          Nada de fórmula mágica, só método e organização.
-        </p>
-        <div class="hero-ctas">
-          <a href="#produtos" class="btn btn-primary">Conhecer os produtos</a>
-          <a href="#sobre" class="btn btn-ghost">Como tudo começou</a>
+  <!-- ==================== PINNED SCROLL STAGE 1: CINEMATIC HERO ==================== -->
+  <section class="pinned-stage stage-hero" id="heroStage">
+    <div class="sticky-viewport">
+      <canvas id="heroCanvas" class="hero-canvas"></canvas>
+      <div class="hero-grid-overlay"></div>
+
+      <div class="container hero-content" id="heroContent">
+        <div class="mono-badge">
+          <span class="dot"></span>
+          <span>O Fim do Estudo Passivo • Método Aprovação 90</span>
         </div>
-        <div class="hero-honesty">
-          <span class="mark" aria-hidden="true">i</span>
-          <p><strong>Aviso honesto:</strong> o AP90 é um projeto pequeno e em construção.
-          O que está à venda abaixo é real e pronto — o resto, a gente testa antes de vender.</p>
+
+        <h1 class="headline-display hero-headline">
+          Você não precisa gastar <span class="accent-green">R$ 3.000 em cursinhos</span> para ter uma preparação de elite e ser aprovado.
+        </h1>
+
+        <p class="hero-subheadline">
+          Descubra o <strong>Ecossistema A90</strong>: o sistema integrado com método de planejamento, engenharia reversa de questões, central inteligente no Notion e IA pelo valor de uma pizza de final de semana.
+        </p>
+
+        <div class="hero-ctas-group">
+          <a href="#oferta" class="btn-a90" id="mainHeroCta">
+            Quero Acessar o Ecossistema Completo por R$ 57,90
+          </a>
+          <a href="#videoShowcase" class="btn-ghost">
+            ▶ Ver Como Funciona na Prática
+          </a>
+        </div>
+
+        <div class="security-microtext">
+          <span>🔒 Pagamento Único</span>
+          <span>⚡ Acesso Imediato</span>
+          <span>🛡️ Garantia Incondicional de 7 Dias</span>
+          <span>📄 Sem Mensalidades</span>
+        </div>
+
+        <!-- VIDEO & MOCKUP SHOWCASE PLAYER -->
+        <div class="hero-media-showcase" id="videoShowcase">
+          <div class="video-top-bar">
+            <div class="window-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <div>A90_ECOSYSTEM_OVERVIEW_V4.MP4 — 4K ULTRA STREAM</div>
+            <div style="color:var(--accent-primary);">● ONLINE</div>
+          </div>
+          <div class="video-mockup-screen" id="videoPlayerBox">
+            <canvas id="systemSimCanvas" class="system-video-canvas"></canvas>
+            <div class="video-interactive-overlay">
+              <div class="video-hud-header">
+                <span class="mono-badge" style="background:rgba(5,6,11,0.8);">MÓDULO: CENTRAL NOTION + ENGENHARIA REVERSA</span>
+                <span style="font-family:var(--font-mono); font-size:11px; color:var(--accent-primary);">FPS: 60 | BUFFER: 100%</span>
+              </div>
+              <div class="video-play-center" id="videoPlayTrigger">
+                <div class="play-pulse-btn">▶</div>
+                <span class="play-label">Apresentação do Ecossistema A90</span>
+              </div>
+              <div class="video-hud-footer">
+                <span id="videoTime">02:44 / 04:15</span>
+                <div class="video-progress-bar-wrap">
+                  <div class="video-progress-fill"></div>
+                </div>
+                <span>4K HD PREVIEW</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PINNED SCROLL STAGE 2: STATEMENT REVEAL ==================== -->
+  <section class="pinned-stage stage-reveal" id="revealStage">
+    <div class="sticky-viewport">
+      <div class="statement-reveal-wrap">
+        <div class="statement-base-text">
+          NÃO ESTUDE MAIS. ESTUDE COM ESTRATÉGIA.
+        </div>
+        <div class="statement-overlay-text" id="revealOverlay">
+          NÃO ESTUDE MAIS. <span class="highlight">ESTUDE COM ESTRATÉGIA.</span>
+        </div>
+        <div class="reveal-rule-line" id="revealLine"></div>
+        <p class="statement-subtext">
+          Acumular PDFs infinitos de 500 páginas e maratonar 20 mil videoaulas não garante vaga. O que aprova é antecipar a malícia do examinador e treinar a recuperação ativa.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 2: O CHOQUE DE REALIDADE (A DOR) ==================== -->
+  <section class="section-pain" id="problema">
+    <div class="container">
+      <div class="pain-header">
+        <span class="section-tag">// 02. O Diagnóstico Brutal</span>
+        <h2 class="headline-display pain-title">
+          Por que 90% dos concurseiros passam anos estudando e continuam travados?
+        </h2>
+        <p class="pain-subtitle">
+          A maioria não é reprovada por falta de esforço ou de inteligência. É reprovada porque comprou a ilusão de que estudar muito é o mesmo que estudar certo.
+        </p>
+      </div>
+
+      <div class="pain-cards-grid">
+        <div class="pain-card">
+          <span class="pain-card-icon">🌀</span>
+          <span class="pain-card-badge">Armadilha 01</span>
+          <h3 class="pain-card-title">A Obesidade Mental das 20.000 Aulas</h3>
+          <p class="pain-card-desc">
+            Grandes cursinhos te vendem portais mastodônticos para justificar preços exorbitantes. Você recebe um oceano de vídeos que nunca conseguirá assistir, gerando culpa, ansiedade e paralisia constante.
+          </p>
+        </div>
+
+        <div class="pain-card">
+          <span class="pain-card-icon">🧠</span>
+          <span class="pain-card-badge">Armadilha 02</span>
+          <h3 class="pain-card-title">A Ilusão da Familiaridade</h3>
+          <p class="pain-card-desc">
+            Passar horas assistindo a um professor falar ou sublinhando apostilas dá a falsa impressão de domínio. No dia da prova, o cérebro trava porque não foi treinado para recuperar o conhecimento sob pressão.
+          </p>
+        </div>
+
+        <div class="pain-card">
+          <span class="pain-card-icon">💸</span>
+          <span class="pain-card-badge">Armadilha 03</span>
+          <h3 class="pain-card-title">O Custo Astronômico e Desnecessário</h3>
+          <p class="pain-card-desc">
+            Planos de R$ 2.700 a R$ 3.800 sustentam estúdios faraônicos e campanhas milionárias de marketing de massa. Enquanto isso, o concurseiro só precisa do método cirúrgico para marcar o X no lugar certo.
+          </p>
         </div>
       </div>
 
-      <div class="hero-panel">
-        <div class="hero-panel-head">
-          <span>Método de estudo</span>
-          <span>4 fases</span>
+      <!-- AUTORIDADE NUMÉRICA -->
+      <div class="authority-stats-band">
+        <div class="stat-block">
+          <div class="stat-number">90 Dias</div>
+          <div class="stat-label">Ciclos de Sprints Estratégicas</div>
         </div>
-        <div class="flight-phases">
-          <div class="phase active">
-            <span class="phase-dot"></span>
-            <span class="phase-label">Construção — mapear o edital</span>
-            <span class="phase-sub">fase 1</span>
+        <div class="stat-block">
+          <div class="stat-number">82%+</div>
+          <div class="stat-label">Taxa Média de Retenção Ativa</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-number">4 Bancas</div>
+          <div class="stat-label">Padrões de Desmonte Decodificados</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-number">&lt; 2%</div>
+          <div class="stat-label">Do Valor dos Cursinhos Tradicionais</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PINNED SCROLL STAGE 3: CURVA DE PROGRESSO (380svh) ==================== -->
+  <section class="pinned-stage stage-curve" id="curveStage">
+    <div class="sticky-viewport">
+      <div class="container curve-split-grid">
+        <div class="curve-left-col">
+          <div>
+            <span class="section-tag">// 03. Evolução Mensurável</span>
+            <h2 class="headline-display" style="font-size: clamp(24px, 3.4vw, 38px); margin-bottom: 12px;">
+              O Ciclo de Progresso Real do Ecossistema A90
+            </h2>
+            <p style="color: var(--text-secondary); font-size: 14px;">
+              Cada dia de estudo deve mover a agulha dos seus acertos. Veja as 5 etapas da nossa engenharia de estudo:
+            </p>
           </div>
-          <div class="phase">
-            <span class="phase-dot"></span>
-            <span class="phase-label">Consolidação — estudar por prioridade</span>
-            <span class="phase-sub">fase 2</span>
+
+          <div class="curve-step-row active" data-step="1">
+            <span class="step-num">01</span>
+            <div class="step-content">
+              <h4>Diagnosticar com Precisão</h4>
+              <p>Mapeamento cirúrgico de pontos cegos através de questões de nível de prova real.</p>
+            </div>
           </div>
-          <div class="phase">
-            <span class="phase-dot"></span>
-            <span class="phase-label">Aperfeiçoamento — questões e revisão</span>
-            <span class="phase-sub">fase 3</span>
+
+          <div class="curve-step-row" data-step="2">
+            <span class="step-num">02</span>
+            <div class="step-content">
+              <h4>Priorizar o Núcleo Duro (80/20)</h4>
+              <p>Eliminação de conteúdo decorativo; foco total nos tópicos que respondem por 80% das questões.</p>
+            </div>
           </div>
-          <div class="phase">
-            <span class="phase-dot"></span>
-            <span class="phase-label">Reta final — fechar os pontos fracos</span>
-            <span class="phase-sub">fase 4</span>
+
+          <div class="curve-step-row" data-step="3">
+            <span class="step-num">03</span>
+            <div class="step-content">
+              <h4>Engenharia Reversa Ativa</h4>
+              <p>Estudo da teoria a partir do desmonte da questão, caçando as palavras contaminadas da banca.</p>
+            </div>
+          </div>
+
+          <div class="curve-step-row" data-step="4">
+            <span class="step-num">04</span>
+            <div class="step-content">
+              <h4>Caderno de Erros em 3 Linhas</h4>
+              <p>Registro rápido do motivo exato do erro: falta de teoria, pegadinha ou distração de leitura.</p>
+            </div>
+          </div>
+
+          <div class="curve-step-row" data-step="5">
+            <span class="step-num">05</span>
+            <div class="step-content">
+              <h4>Consolidação em 24h, 7d e 30d</h4>
+              <p>Revisão espaçada automatizada na Central Notion para garantir retenção na memória de longo prazo.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="curve-right-col">
+          <div class="curve-plot-box">
+            <div class="plot-header">
+              <span>PROGRESSO E RETENÇÃO ACUMULADA</span>
+              <span id="plotPhaseLabel" style="color: var(--accent-primary);">FASE 01: DIAGNÓSTICO</span>
+            </div>
+            <canvas id="curveCanvas" class="plot-canvas-el" width="480" height="240"></canvas>
+            <div class="plot-readout">
+              <div>
+                <div class="readout-val" id="readoutValue">48%</div>
+                <div class="readout-desc">Índice Médio de Retenção</div>
+              </div>
+              <div style="text-align: right;">
+                <span class="mono-badge">METODOLOGIA A90</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="produtos">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <div class="section-label">// PRODUTOS</div>
-          <h2 class="section-title">O que já está pronto</h2>
-        </div>
-        <p class="section-desc">Três produtos disponíveis hoje, com acesso imediato. Clique para ver detalhes e comprar.</p>
+  <!-- ==================== SECTION 4: ANCORAGEM BRUTAL & A METÁFORA DA PIZZA ==================== -->
+  <section class="section-anchoring" id="comparativo">
+    <div class="container">
+      <div style="text-align: center; max-width: 820px; margin: 0 auto;">
+        <span class="section-tag">// 04. Ancoragem de Mercado</span>
+        <h2 class="headline-display" style="font-size: clamp(26px, 3.8vw, 42px); margin-bottom: 16px;">
+          Compare: O Modelo Tradicional vs. O Ecossistema A90
+        </h2>
+        <p style="color: var(--text-secondary); font-size: 15.5px;">
+          Passar em concurso virou artigo de luxo? Veja o que o mercado cobra para te encher de teoria versus o que a A90 entrega para você ser aprovado.
+        </p>
       </div>
 
-      <div class="product-grid">
-        <!-- CARDS AGORA SÃO BOTÕES REAIS: abrem modal com detalhes + compra -->
-        <button class="card" data-product="engenharia">
-          <div class="card-cover">
+      <!-- TABELA COMPARATIVA BRUTAL -->
+      <div class="comparison-table-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Plataforma / Modelo</th>
+              <th>Investimento Cobrado</th>
+              <th>O Que Você Realmente Recebe</th>
+              <th>Resultado Prático</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Plano Vitalício (AlfaCon)</strong></td>
+              <td class="price-bad">R$ 2.722,00</td>
+              <td>Milhares de horas teóricas e videoaulas infindáveis</td>
+              <td style="color:var(--text-muted);">Sobrecarga mental e sensação de nunca sair do lugar</td>
+            </tr>
+            <tr>
+              <td><strong>Assinatura Premium 2 Anos (Estratégia)</strong></td>
+              <td class="price-bad">R$ 3.826,00</td>
+              <td>PDFs de 500 páginas que cobrem o edital de forma exaustiva</td>
+              <td style="color:var(--text-muted);">Ritmo lento e estudo passivo com baixa taxa de retenção</td>
+            </tr>
+            <tr>
+              <td><strong>Mentorias Tradicionais</strong></td>
+              <td class="price-bad">R$ 1.500 a R$ 4.000</td>
+              <td>Planilhas manuais e orientações semanais pontuais</td>
+              <td style="color:var(--text-muted);">Custo altíssimo com pouca autonomia para o aluno</td>
+            </tr>
+            <tr class="highlight-a90">
+              <td><strong>ECOSSISTEMA A90 COMPLETO</strong></td>
+              <td class="price-a90">R$ 57,90</td>
+              <td>3 E-books + Central Notion + IA + Caderno de 100 Questões + Web App</td>
+              <td style="color:var(--accent-primary);">Preparação ativa, rápida, com retenção acima de 80%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- A METÁFORA DA PIZZA -->
+      <div class="pizza-metaphor-box">
+        <div style="text-align: center; max-width: 680px; margin: 0 auto;">
+          <span class="mono-badge">TANGIBILIZAÇÃO REAL DE CUSTO</span>
+          <h3 class="headline-display" style="font-size: clamp(22px, 3.2vw, 34px); margin: 16px 0 10px;">
+            Quanto vale a sua estabilidade financeira e aprovação?
+          </h3>
+          <p style="color: var(--text-secondary); font-size: 14.5px;">
+            Faça um comparativo simples com o que você já gasta sem pensar em um sábado à noite:
+          </p>
+        </div>
+
+        <div class="pizza-grid">
+          <div class="pizza-card">
+            <div class="pizza-card-header">
+              <span style="font-size: 32px;">🍕</span>
+              <span class="pizza-price-tag" style="color: #FF7B72;">R$ 59,98</span>
+            </div>
+            <h3>A Pizza do Fim de Semana</h3>
+            <p style="color: var(--text-secondary); font-size: 13.5px;">
+              Preço médio de uma pizza grande com entrega em qualquer capital brasileira.
+            </p>
+            <ul>
+              <li>❌ Dura 30 minutos na mesa e acaba</li>
+              <li>❌ Não gera nenhum retorno profissional</li>
+              <li>❌ Na segunda-feira você continua com as mesmas dúvidas e medos</li>
+            </ul>
+          </div>
+
+          <div class="pizza-card winner">
+            <div class="pizza-card-header">
+              <span style="font-size: 32px;">⚡</span>
+              <span class="pizza-price-tag" style="color: var(--accent-primary);">R$ 57,90</span>
+            </div>
+            <h3>O Ecossistema A90 Completo</h3>
+            <p style="color: var(--accent-primary); font-size: 13.5px; font-weight: 600;">
+              Investimento único • Menos de R$ 2,00 por dia no primeiro mês.
+            </p>
+            <ul>
+              <li>✓ 3 E-books completos com metodologia cirúrgica</li>
+              <li>✓ Template oficial da Central Notion de Estudos</li>
+              <li>✓ Prompts de IA para gerar simulados inéditos de qualquer lei</li>
+              <li>✓ Caderno de 100 Questões comentadas + Acesso ao Web App</li>
+              <li>✓ Conquista do seu cargo público e estabilidade para toda a vida</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 36px;">
+          <a href="#oferta" class="btn-a90">Quero Trocar a Pizza Pela Minha Aprovação por R$ 57,90</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PINNED SCROLL STAGE 4: CONVERGENCE & FECHAMENTO (300svh) ==================== -->
+  <section class="pinned-stage stage-convergence" id="convergenceStage">
+    <div class="sticky-viewport">
+      <canvas id="convergenceCanvas" class="convergence-canvas"></canvas>
+      <div class="convergence-content">
+        <span class="mono-badge" style="margin-bottom: 20px;">CONVERGÊNCIA E DISCIPLINA</span>
+        <h2 class="headline-display convergence-headline">
+          A aprovação não é um golpe de sorte. É uma equação de <span class="accent-green">método, constância e desmonte</span> da banca.
+        </h2>
+        <p style="color: var(--text-secondary); font-size: 16px; margin-bottom: 32px; max-width: 680px; margin-left: auto; margin-right: auto;">
+          Quando você domina como a banca formula as alternativas, você para de estudar no escuro e assume o controle do gabarito.
+        </p>
+        <a href="#entregaveis" class="btn-a90">Conhecer o Conteúdo do Ecossistema</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 5: OS 4 PILARES A90 ==================== -->
+  <section class="section-method" id="metodo">
+    <div class="container">
+      <div style="text-align: center; max-width: 820px; margin: 0 auto;">
+        <span class="section-tag">// 05. A Engrenagem Estratégica</span>
+        <h2 class="headline-display" style="font-size: clamp(26px, 3.6vw, 40px); margin-bottom: 14px;">
+          O Método A90 Explicado em 4 Pilares
+        </h2>
+        <p style="color: var(--text-secondary); font-size: 15px;">
+          Não são ferramentas isoladas. É um fluxo contínuo de aprendizagem acelerada que funciona mesmo para quem só tem 2 horas por dia.
+        </p>
+      </div>
+
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <span class="pillar-num">PILAR 01</span>
+          <h3>PLANEJE</h3>
+          <p>
+            Transforme o edital bruto em backlog verticalizado inteligente. Organize sprints semanais sem metas irreais que só geram ansiedade e frustração.
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <span class="pillar-num">PILAR 02</span>
+          <h3>ESTUDE</h3>
+          <p>
+            Abandone a passividade das videoaulas. Aplique a leitura ativa com blocos de foco de alto rendimento e recuperação imediata dos tópicos cobrados.
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <span class="pillar-num">PILAR 03</span>
+          <h3>EVOLUA</h3>
+          <p>
+            Registre cada falha no Caderno de Erros em 3 Linhas. Identifique seus pontos cegos nas métricas dominicais e feche os gargalos antes do dia da prova.
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <span class="pillar-num">PILAR 04</span>
+          <h3>APROVE</h3>
+          <p>
+            Decodifique o padrão dos examinadores (Cebraspe, FGV, FCC, Vunesp). Antecipe pegadinhas e resolva as questões com a mente do elaborador da banca.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 6: PILHA DE VALOR DETALHADA ==================== -->
+  <section class="section-products" id="entregaveis">
+    <div class="container">
+      <div style="text-align: center; max-width: 860px; margin: 0 auto;">
+        <span class="section-tag">// 06. A Pilha de Valor Completa</span>
+        <h2 class="headline-display" style="font-size: clamp(26px, 3.8vw, 42px); margin-bottom: 14px;">
+          O Que Você Recebe Dentro do Ecossistema A90
+        </h2>
+        <p style="color: var(--text-secondary); font-size: 15px;">
+          Tudo o que você precisa para planejar, estudar e revisar em um só lugar. Sem enrolação, sem teorias desnecessárias.
+        </p>
+      </div>
+
+      <!-- VITRINE DOS 4 PRODUTOS CENTRAIS -->
+      <div class="products-grid-showcase">
+
+        <!-- PRODUTO 1: ENGENHARIA REVERSA -->
+        <div class="product-box">
+          <div class="product-box-cover">
             <img src="engenharia-reversa-capa.jpg" alt="Capa E-book Engenharia Reversa de Questões">
           </div>
-          <div class="card-format"><span class="sq"></span>E-BOOK</div>
-          <h3>Engenharia Reversa de Questões</h3>
-          <p class="desc">Aprenda a dissecar a prova como um perito: menos estudo passivo e mais precisão para marcar o gabarito correto.</p>
-          <div class="card-footer">
-            <span class="card-cta">Ver detalhes →</span>
-            <span class="card-price">R$ 9,90</span>
+          <div class="product-box-body">
+            <div>
+              <div class="format-badge">E-BOOK OFICIAL • 100% PRÁTICO</div>
+              <h3>Engenharia Reversa de Questões</h3>
+              <p>
+                O manual definitivo para ler o edital de trás para frente. Aprenda a decodificar as bancas, caçar termos contaminados em alternativas e ancorar a teoria onde ela é realmente cobrada.
+              </p>
+            </div>
+            <div class="product-box-footer">
+              <span>Valor individual: <span class="val-anchor">R$ 29,90</span></span>
+              <span style="color:var(--accent-primary);">Incluso no Pacote</span>
+            </div>
           </div>
-        </button>
+        </div>
 
-        <button class="card" data-product="ap90">
-          <div class="card-cover">
-            <img src="ap90-ebook-capa.jpg" alt="Capa E-book AP90 — o método">
+        <!-- PRODUTO 2: MÉTODO A90 -->
+        <div class="product-box">
+          <div class="product-box-cover">
+            <img src="ap90-ebook-capa.jpg" alt="Capa E-book Método Aprovação 90">
           </div>
-          <div class="card-format"><span class="sq"></span>E-BOOK</div>
-          <h3>AP90 — o método</h3>
-          <p class="desc">O método AP90 em formato de leitura: como planejar, estudar e revisar em ciclos de 90 dias, pensado para quem tem rotina apertada e pouca margem para errar o foco.</p>
-          <div class="card-footer">
-            <span class="card-cta">Ver detalhes →</span>
-            <span class="card-price">R$ 9,90</span>
+          <div class="product-box-body">
+            <div>
+              <div class="format-badge">E-BOOK OFICIAL • GUIA DE EXECUÇÃO</div>
+              <h3>Método A90 — O Kit de Arranque</h3>
+              <p>
+                Como organizar seus estudos em 7 dias e evoluir com consistência em ciclos de 90 dias. Projetado especialmente para concurseiros que trabalham e têm poucas horas líquidas livres.
+              </p>
+            </div>
+            <div class="product-box-footer">
+              <span>Valor individual: <span class="val-anchor">R$ 29,90</span></span>
+              <span style="color:var(--accent-primary);">Incluso no Pacote</span>
+            </div>
           </div>
-        </button>
+        </div>
 
-        <button class="card" data-product="notion">
-          <div class="card-cover">
-            <img src="notion-template-capa.jpg" alt="Capa Template Notion Aprovação 90">
+        <!-- PRODUTO 3: EXTERMINADOR DE CONCURSOS (IA) -->
+        <div class="product-box">
+          <div class="product-box-cover">
+            <img src="exterminador-ia-capa.jpg" alt="Capa E-book Exterminador de Concursos IA">
           </div>
-          <div class="card-format"><span class="sq"></span>TEMPLATE NOTION</div>
-          <h3>Aprovação 90</h3>
-          <p class="desc">Um template do Notion para organizar edital, cronograma e revisões em um único lugar — sem gamificação, sem automação desnecessária, só o que ajuda a estudar.</p>
-          <div class="card-footer">
-            <span class="card-cta">Ver detalhes →</span>
-            <span class="card-price">R$ 24,90</span>
+          <div class="product-box-body">
+            <div>
+              <div class="format-badge">E-BOOK DE IA • TECNOLOGIA AVANÇADA</div>
+              <h3>Exterminador de Concursos com IA</h3>
+              <p>
+                Prompts prontos de Inteligência Artificial para gerar simulados gabaritados de leis municipais ou estaduais novíssimas que ainda não têm questões disponíveis na internet.
+              </p>
+            </div>
+            <div class="product-box-footer">
+              <span>Valor individual: <span class="val-anchor">R$ 24,90</span></span>
+              <span style="color:var(--accent-primary);">Incluso no Pacote</span>
+            </div>
           </div>
-        </button>
+        </div>
 
-        <!-- card de captura no lugar dos 2 cards vazios: transforma curiosidade em lead -->
-        <div class="card capture">
-          <div class="card-format"><span class="sq"></span>EM CONSTRUÇÃO</div>
-          <h3>Dois projetos a caminho</h3>
-          <p class="desc">Um sistema de estudo com apoio de IA e uma novidade ainda em teste interno. Sem data forçada — mas você pode saber primeiro.</p>
-          <form class="lead-form" data-lead-form>
-            <input type="email" name="email" placeholder="seu@email.com" required aria-label="Seu e-mail">
-            <button type="submit" class="btn btn-primary">Avise-me quando lançar</button>
-            <span class="lead-success">✓ Você entrou na lista. Prometemos: só e-mail quando houver novidade real.</span>
-          </form>
+        <!-- PRODUTO 4: CENTRAL NOTION DE ESTUDOS -->
+        <div class="product-box">
+          <div class="product-box-cover">
+            <img src="notion-template-capa.jpg" alt="Template Oficial Central Notion A90">
+          </div>
+          <div class="product-box-body">
+            <div>
+              <div class="format-badge">TEMPLATE OFICIAL • CENTRAL NOTION</div>
+              <h3>Central Notion de Estudos A90</h3>
+              <p>
+                Seu QG completo de estudos: edital verticalizado automatizado, banco de questões com acertos por disciplina, visão semanal e controle de revisões com duplicação em 1 clique.
+              </p>
+            </div>
+            <div class="product-box-footer">
+              <span>Valor individual: <span class="val-anchor">R$ 37,00</span></span>
+              <span style="color:var(--accent-primary);">Incluso no Pacote</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- BÔNUS EXCLUSIVOS INCLUSOS HOJE -->
+      <div style="margin-top: 50px;">
+        <h3 class="headline-display" style="font-size: 20px; text-align: center; margin-bottom: 8px;">
+          🎁 Bônus Exclusivos Inclusos na Sua Inscrição Hoje:
+        </h3>
+        <p style="text-align: center; color: var(--text-secondary); font-size: 13.5px;">
+          Liberados imediatamente após a confirmação do pagamento sem nenhum custo extra.
+        </p>
+
+        <div class="bonus-showcase-grid">
+          <div class="bonus-box">
+            <span class="bonus-tag">BÔNUS 01 • VALOR R$ 24,90</span>
+            <h4>Caderno de 100 Questões Comentadas</h4>
+            <p>100 questões das disciplinas fundamentais comentadas alternativa por alternativa com a técnica de desmonte da banca.</p>
+          </div>
+
+          <div class="bonus-box">
+            <span class="bonus-tag">BÔNUS 02 • ACESSO VIP</span>
+            <h4>Web App Inteligente APROVAÇÃO 90</h4>
+            <p>Acesso exclusivo ao Web App de cronômetro inteligente, caderno de erros digital e métricas direto no seu celular ou PC.</p>
+          </div>
+
+          <div class="bonus-box">
+            <span class="bonus-tag">BÔNUS 03 • GUIA EM VÍDEO</span>
+            <h4>Módulo de Aulas em Vídeo na Prática</h4>
+            <p>Aulas rápidas mostrando o passo a passo exato de instalação do Notion e configuração do seu primeiro ciclo de 90 dias.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="diferenciais">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <div class="section-label">// COMO PENSAMOS</div>
-          <h2 class="section-title">O que guia o AP90</h2>
-        </div>
-      </div>
-      <div class="diff-grid">
-        <div class="diff-item">
-          <div class="num">01</div>
-          <h4>Feito estudando, não vendendo</h4>
-          <p>Cada material sai de um problema que a gente mesmo teve estudando pra concurso — não de uma pesquisa de mercado.</p>
-        </div>
-        <div class="diff-item">
-          <div class="num">02</div>
-          <h4>Simples de propósito</h4>
-          <p>Sem gamificação, sem recurso pra parecer sofisticado. Se uma função não ajuda a estudar melhor, ela não entra.</p>
-        </div>
-        <div class="diff-item">
-          <div class="num">03</div>
-          <h4>Sem promessa vazia</h4>
-          <p>Nenhum produto aqui promete aprovação garantida. O que existe é método, organização e constância — o resto é com você.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- ==================== SECTION 7: O CARD DE OFERTA IRRESISTÍVEL ==================== -->
+  <section class="section-offer" id="oferta">
+    <div class="container">
+      <div class="offer-main-card">
+        <div class="offer-badge-tag">OFERTA DE LANÇAMENTO • ACESSO VITALÍCIO</div>
 
-  <!-- Blog (sem posts) + captura unificados: um único bloco de expectativa -->
-  <section id="lista">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <div class="section-label">// BLOG & NOVIDADES</div>
-          <h2 class="section-title">O que vem por aí</h2>
+        <h2 class="headline-display offer-title">
+          Garanta o Ecossistema A90 Completo
+        </h2>
+        <p class="offer-desc">
+          Receba acesso imediato aos 3 E-books, à Central Notion de Estudos, às ferramentas de IA e a todos os bônus exclusivos.
+        </p>
+
+        <div class="pricing-display">
+          <div class="pricing-old">De R$ 146,60 somando os materiais individuais</div>
+          <div class="pricing-current">R$ 57,90</div>
+          <div class="pricing-installments">Pagamento único à vista ou em até 6x no cartão</div>
         </div>
-      </div>
 
-      <div class="topic-chips">
-        <span class="chip">planejamento — como ler um edital sem se perder</span>
-        <span class="chip">rotina — estudar trabalhando 8h por dia</span>
-        <span class="chip">revisão — revisão espaçada, na prática</span>
-      </div>
+        <ul class="offer-checklist">
+          <li>
+            <span class="check-icon">✓</span>
+            <span><strong>E-book Oficial:</strong> Engenharia Reversa de Questões (PDF)</span>
+          </li>
+          <li>
+            <span class="check-icon">✓</span>
+            <span><strong>E-book Oficial:</strong> Método A90 — O Kit de Arranque (PDF)</span>
+          </li>
+          <li>
+            <span class="check-icon">✓</span>
+            <span><strong>E-book Oficial:</strong> Exterminador de Concursos com IA (PDF)</span>
+          </li>
+          <li>
+            <span class="check-icon">✓</span>
+            <span><strong>Template Notion Oficial:</strong> Central de Estudos Inteligente (Duplicação 1 clique)</span>
+          </li>
+          <li>
+            <span class="check-icon">✓</span>
+            <span><strong>BÔNUS 1:</strong> Caderno de 100 Questões Práticas Comentadas</span>
+          </li>
+          <li>
+            <span class="check-icon">✓</span>
+            <span><strong>BÔNUS 2:</strong> Acesso ao Web App Inteligente APROVAÇÃO 90</span>
+          </li>
+          <li>
+            <span class="check-icon">✓</span>
+            <span><strong>BÔNUS 3:</strong> Módulo de Videoaulas Práticas de Configuração</span>
+          </li>
+          <li>
+            <span class="check-icon">✓</span>
+            <span><strong>Garantia Blindada:</strong> 7 dias para testar com risco zero</span>
+          </li>
+        </ul>
 
-      <div class="lead-panel">
-        <div>
-          <h3>Receba os primeiros posts e lançamentos</h3>
-          <p>O blog ainda não tem posts publicados — os três temas acima estão sendo escritos agora. Entre na lista e receba direto no e-mail, sem spam e sem "últimas vagas".</p>
-        </div>
-        <form class="lead-form" data-lead-form>
-          <input type="email" name="email" placeholder="seu@email.com" required aria-label="Seu e-mail">
-          <button type="submit" class="btn btn-primary">Entrar na lista</button>
-          <span class="lead-success">✓ Feito! Você vai saber antes de todo mundo.</span>
-        </form>
-      </div>
-    </div>
-  </section>
+        <!-- BOTÃO DE CHECKOUT KIWIFY -->
+        <a href="https://pay.kiwify.com.br/lUuzGtL" class="btn-a90 offer-cta-btn" id="btnCheckoutOffer" target="_blank" rel="noopener">
+          SIM! QUERO GARANTIR O ECOSSISTEMA A90 POR R$ 57,90
+        </a>
 
-  <section id="sobre">
-    <div class="wrap about-wrap">
-      <div>
-        <div class="section-label">// SOBRE</div>
-        <h2 class="section-title">Um projeto pequeno, construído aos poucos</h2>
-      </div>
-      <div class="about-body">
-        <p>O AP90 começou como uma ferramenta pessoal pra organizar o próprio estudo — sem equipe, sem investimento pesado, sem pressa artificial. O que funcionou virou produto.</p>
-        <p>O que vem depois está sendo testado antes de virar promessa de venda. Preferimos crescer devagar do que inflar o que ainda não existe.</p>
-
-        <div class="log-panel">
-          <div class="log-head">Registro do projeto</div>
-          <div class="log-line"><span class="lg">✓</span><span>Template Notion e e-books publicados e à venda</span></div>
-          <div class="log-line"><span class="lg">→</span><span>Sistema de estudo com apoio de IA em desenvolvimento</span></div>
-          <div class="log-line"><span class="lg">→</span><span>Blog em preparação — primeiros posts a caminho</span></div>
+        <div class="guarantee-seal-row">
+          <span>🛡️ Garantia de 7 Dias CDC</span>
+          <span>⚡ Acesso Instantâneo via E-mail</span>
+          <span>🔒 Checkout Seguro Kiwify</span>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="final-cta">
-    <div class="wrap">
-      <h2>Comece pelo que já existe hoje</h2>
-      <p>Três produtos prontos pra quem quer organizar o estudo agora — sem esperar o resto ficar pronto.</p>
-      <div class="hero-ctas" style="justify-content:center;">
-        <a href="#produtos" class="btn btn-primary">Ver os 3 produtos</a>
-        <a href="#lista" class="btn btn-ghost">Entrar na lista de novidades</a>
+  <!-- ==================== SECTION 8: ANTES E DEPOIS (RESULTADOS) ==================== -->
+  <section class="section-results" id="resultados">
+    <div class="container">
+      <div style="text-align: center; max-width: 820px; margin: 0 auto;">
+        <span class="section-tag">// 08. A Transformação Real</span>
+        <h2 class="headline-display" style="font-size: clamp(26px, 3.6vw, 40px); margin-bottom: 12px;">
+          O Que Muda na Sua Rotina com o Ecossistema A90
+        </h2>
+        <p style="color: var(--text-secondary); font-size: 15px;">
+          Veja a diferença prática entre quem estuda pelo método tradicional dos cursinhos e quem estuda com a metodologia da A90:
+        </p>
+      </div>
+
+      <div class="transformation-grid">
+        <div class="transform-card before">
+          <h4 style="color: #FF7B72;">❌ O Concurseiro Sem Método:</h4>
+          <ul>
+            <li>Estuda 5 horas por dia, mas não lembra o que leu na semana anterior.</li>
+            <li>Passa meses assistindo a videoaulas sem resolver questões suficientes.</li>
+            <li>Estagna na faixa dos 50% a 60% de acertos e não sabe onde está errando.</li>
+            <li>Gasta fortunas com assinaturas ilimitadas e se sente constantemente atrasado.</li>
+          </ul>
+        </div>
+
+        <div class="transform-card after">
+          <h4 style="color: var(--accent-primary);">✅ O Aluno do Ecossistema A90:</h4>
+          <ul>
+            <li>Estuda 2 horas líquidas com foco cirúrgico e alta retenção na memória.</li>
+            <li>Desmonta as questões da banca e ancora a teoria exatamente onde ela é cobrada.</li>
+            <li>Supera com consistência a barreira dos 80%+ de acertos em simulados e provas.</li>
+            <li>Investe menos que o valor de uma pizza e tem clareza exata do que fazer todo dia.</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- ==================== SECTION 9: PERGUNTAS FREQUENTES (FAQ) ==================== -->
+  <section class="section-faq" id="faq">
+    <div class="container">
+      <div style="text-align: center; max-width: 820px; margin: 0 auto;">
+        <span class="section-tag">// 09. Dúvidas Frequentes</span>
+        <h2 class="headline-display" style="font-size: clamp(26px, 3.6vw, 40px); margin-bottom: 12px;">
+          Perguntas Frequentes
+        </h2>
+        <p style="color: var(--text-secondary); font-size: 15px;">
+          Respostas diretas e transparentes para as dúvidas mais comuns dos nossos alunos:
+        </p>
+      </div>
+
+      <div class="faq-accordion-wrap">
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>O material serve para quem tem apenas 2 horas disponíveis por dia?</span>
+            <span class="toggle-indicator">+</span>
+          </summary>
+          <div class="faq-answer">
+            Sim! O Método A90 foi desenhado exatamente para quem trabalha e tem rotina apertada. Em vez de exigir 6 ou 8 horas de estudo passivo, ele ensina você a extrair o rendimento máximo de 2 horas líquidas diárias com a engenharia reversa e a priorização dos 80/20 do edital.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Eu já assino um cursinho tradicional (Estratégia, Gran ou AlfaCon). O Ecossistema serve para mim?</span>
+            <span class="toggle-indicator">+</span>
+          </summary>
+          <div class="faq-answer">
+            Com certeza. O seu cursinho tradicional te entrega a teoria bruta e os PDFs gigantescos. O Ecossistema A90 te entrega a estratégia para não se afogar nesse mar de conteúdo, ensinando você a filtrar o que realmente pontua, organizar o edital no Notion e revisar de forma eficiente.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Preciso ter conhecimento avançado ou pagar o Notion para usar o template?</span>
+            <span class="toggle-indicator">+</span>
+          </summary>
+          <div class="faq-answer">
+            Não. O Notion é 100% gratuito. Você não precisa pagar nenhuma assinatura para utilizá-lo. Além disso, a Central Notion A90 já vem pronta para uso: basta clicar em "Duplicar" no link que você recebe e ela é copiada para a sua conta em 10 segundos, acompanhada de um vídeo curto de instruções.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>O valor de R$ 57,90 é uma mensalidade ou pagamento único?</span>
+            <span class="toggle-indicator">+</span>
+          </summary>
+          <div class="faq-answer">
+            É um pagamento único! Não existem cobranças recorrentes, mensalidades ocultas ou taxas de renovação anual. Você paga R$ 57,90 uma única vez e garante acesso vitalício a todos os materiais, e-books, templates e bônus inclusos.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Como e quando recebo o acesso aos materiais?</span>
+            <span class="toggle-indicator">+</span>
+          </summary>
+          <div class="faq-answer">
+            O envio é 100% automático e imediato. Assim que o pagamento (via Pix ou Cartão de Crédito) for aprovado na Kiwify, você recebe na mesma hora um e-mail com todos os links de download dos e-books em PDF e o link direto para duplicar a Central Notion.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>E se eu achar que o método não é para mim? Como funciona a garantia?</span>
+            <span class="toggle-indicator">+</span>
+          </summary>
+          <div class="faq-answer">
+            Você conta com uma Garantia Incondicional de 7 Dias protegida pelo Código de Defesa do Consumidor (Art. 49). Se você acessar os materiais, testar o método e achar que ele não agregou à sua preparação, basta solicitar o reembolso na própria Kiwify com um único clique. Devolvemos 100% do seu dinheiro sem burocracia.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 10: ANCORAGEM FINAL & VOLTA À OFERTA ==================== -->
+  <section class="section-final-cta">
+    <div class="container final-cta-box">
+      <span class="mono-badge" style="margin-bottom: 18px;">A SUA DECISÃO AGORA</span>
+      <h2 class="headline-display final-headline">
+        Você vai continuar no ciclo da obesidade mental ou vai garantir sua preparação de elite?
+      </h2>
+      <p class="final-sub">
+        Você pode continuar gastando milhares de reais em assinaturas intermináveis e acumulando videoaulas que nunca vai assistir... Ou pode investir menos que o valor de uma pizza para ter um método estratégico e direcionado que coloca você na rota dos 80%+ de acertos.
+      </p>
+      <a href="#oferta" class="btn-a90" style="padding: 22px 42px; font-size: 15px;">
+        QUERO GARANTIR MEU ACESSO AGORA POR R$ 57,90
+      </a>
+      <div style="margin-top: 24px; font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted);">
+        Acesso imediato • Pagamento único de R$ 57,90 • 7 dias de garantia incondicional
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
   <footer>
-    <div class="wrap">
-      <div class="foot-left">
-        <div class="brand-mark" style="width:28px;height:28px;border-radius:6px;">
-          <img src="logo-ap90.jpg" alt="Logo AP90">
-        </div>
-        <span class="foot-note">AP90 · Aprovação em Alta Performance</span>
+    <div class="container footer-wrap">
+      <div class="brand-lockup">
+        <img src="logo-ap90.jpg" alt="A90 Logo" style="width: 28px; height: 28px; border-radius: 4px;">
+        <span style="font-family: var(--font-headline); font-weight: 700; color: var(--text-primary);">
+          APROVAÇÃO <span style="color: var(--accent-primary);">90</span>
+        </span>
+        <span style="color: var(--text-muted); font-size: 11px; margin-left: 8px;">· Planeje. Estude. Evolua. Aprove.</span>
       </div>
-      <div class="foot-links">
-        <a href="#produtos">Produtos</a>
-        <a href="#lista">Novidades</a>
-        <a href="#sobre">Sobre</a>
-        <!-- TODO: criar páginas reais de Termos e Privacidade (LGPD) -->
-        <a href="#termos">Termos de uso</a>
-        <a href="#privacidade">Privacidade</a>
-        <a href="mailto:contato@seudominio.com">Contato</a>
+
+      <div class="footer-links">
+        <a href="#metodo">O Método</a>
+        <a href="#oferta">Oferta</a>
+        <a href="#faq">FAQ</a>
+        <a href="mailto:contato@ap90concursos.com">Suporte</a>
       </div>
-      <span class="foot-note">© 2026 · Projeto em construção — atualizado aos poucos</span>
+
+      <div>
+        © 2026 APROVAÇÃO 90 • Todos os direitos reservados.
+      </div>
     </div>
   </footer>
 
-  <!-- ============ MODAL DE PRODUTO ============ -->
-  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal">
-      <button class="modal-close" id="modalClose" aria-label="Fechar">✕</button>
-      <div class="modal-cover" id="modalCoverContainer">
-        <img id="modalImg" src="" alt="">
-      </div>
-      <div class="card-format" id="modalFormat"><span class="sq"></span><span id="modalFormatText"></span></div>
-      <h3 id="modalTitle"></h3>
-      <p class="modal-desc" id="modalDesc"></p>
-      <ul id="modalIncludes"></ul>
-      <div class="modal-price-row">
-        <span class="modal-price" id="modalPrice"></span>
-        <span class="modal-price-note">pagamento único · acesso imediato</span>
-      </div>
-      <a href="#" class="btn btn-primary" id="modalBuy" target="_blank" rel="noopener">Comprar agora</a>
-      <p class="modal-guarantee">Compra protegida: garantia incondicional de 7 dias (Código de Defesa do Consumidor, art. 49).</p>
-    </div>
-  </div>
+  <!-- ==========================================================================
+     SCRIPTS & ANIMATION ENGINE
+     ========================================================================== -->
+  <script>
+    /* ==========================================================================
+       1. HERO DRIFTING GREEN LIGHT FIELDS (CANVAS)
+       ========================================================================== */
+    const heroCanvas = document.getElementById('heroCanvas');
+    const heroCtx = heroCanvas.getContext('2d');
+    let heroW, heroH;
 
-<script>
-  /* ============ CONFIGURAÇÃO DOS PRODUTOS ============ */
-  const PRODUCTS = {
-    engenharia: {
-      format: "E-BOOK",
-      image: "engenharia-reversa-capa.jpg",
-      title: "Engenharia Reversa de Questões",
-      desc: "Aprenda a dissecar a prova como um perito: menos estudo passivo e mais precisão para marcar o gabarito correto. Não estude para virar um acadêmico; estude para reconhecer o padrão que a banca repete em toda prova.",
-      includes: [
-        "Do Enunciado para a Lei Seca: Como usar a questão como âncora para ler apenas os artigos e súmulas que realmente caem.",
-        "Caça ao Termo Contaminado: A técnica para eliminar distratores de múltipla escolha com rapidez e segurança.",
-        "Caderno de Erros Ativo: Um sistema enxuto para transformar cada erro de treino em um ponto garantido na prova.",
-        "Simulador Inédito com IA: O passo a passo para criar questões no estilo da sua banca para assuntos raros.",
-        "Formato PDF Direto: Leitura visual, com analogias práticas e aplicação imediata."
-      ],
-      price: "R$ 9,90",
-      checkout: "https://pay.kiwify.com.br/9B0G7di"
-    },
-    ap90: {
-      format: "E-BOOK",
-      image: "ap90-ebook-capa.jpg",
-      title: "AP90 — o método",
-      desc: "O método AP90 em formato de leitura: como planejar, estudar e revisar em ciclos de 90 dias, pensado para quem tem rotina apertada e pouca margem para errar o foco.",
-      includes: [
-        "O ciclo de 90 dias explicado fase a fase",
-        "Como montar cronograma realista pra quem trabalha",
-        "Sistema de revisão em 24h / 7 dias / 30 dias",
-        "Checklist semanal de manutenção do plano"
-      ],
-      price: "R$ 9,90",
-      checkout: "https://pay.kiwify.com.br/f7n5kTC"
-    },
-    notion: {
-      format: "TEMPLATE NOTION",
-      image: "notion-template-capa.jpg",
-      title: "Aprovação 90",
-      desc: "Um template do Notion para organizar edital, cronograma e revisões em um único lugar — sem gamificação, sem automação desnecessária, só o que ajuda a estudar.",
-      includes: [
-        "Dashboard único: edital, matérias, cronograma e revisões",
-        "Banco de questões com registro de acertos por tema",
-        "Visão semanal automática do que estudar",
-        "Instruções de instalação em 5 minutos"
-      ],
-      price: "R$ 24,90",
-      checkout: "https://pay.kiwify.com.br/lUuzGtL"
+    function resizeHeroCanvas() {
+      heroW = heroCanvas.width = heroCanvas.offsetWidth;
+      heroH = heroCanvas.height = heroCanvas.offsetHeight;
     }
-  };
+    window.addEventListener('resize', resizeHeroCanvas);
+    resizeHeroCanvas();
 
-  /* ============ MODAL ============ */
-  const backdrop = document.getElementById('modalBackdrop');
-  const buyBtn = document.getElementById('modalBuy');
-  const modalCoverContainer = document.getElementById('modalCoverContainer');
-  const modalImg = document.getElementById('modalImg');
-  let lastFocus = null;
+    // 5 drifting radial green energy fields
+    const fields = [
+      { bx: 0.30, by: 0.35, r: 0.40, sx: 0.0008, sy: 0.0011, alpha: 0.18, color: '163, 230, 53' },
+      { bx: 0.70, by: 0.40, r: 0.45, sx: 0.0012, sy: 0.0009, alpha: 0.16, color: '132, 204, 22' },
+      { bx: 0.50, by: 0.65, r: 0.35, sx: 0.0009, sy: 0.0014, alpha: 0.15, color: '101, 163, 13' },
+      { bx: 0.20, by: 0.75, r: 0.38, sx: 0.0014, sy: 0.0010, alpha: 0.12, color: '163, 230, 53' },
+      { bx: 0.85, by: 0.70, r: 0.32, sx: 0.0011, sy: 0.0013, alpha: 0.14, color: '132, 204, 22' }
+    ];
 
-  function openModal(key){
-    const p = PRODUCTS[key];
-    if (!p) return;
-    if (p.image) {
-      modalImg.src = p.image;
-      modalImg.alt = p.title;
-      modalCoverContainer.style.display = 'block';
-    } else {
-      modalCoverContainer.style.display = 'none';
+    let t = 0;
+    function renderHeroCanvas() {
+      t++;
+      heroCtx.clearRect(0, 0, heroW, heroH);
+
+      fields.forEach((f, i) => {
+        const x = heroW * (f.bx + Math.sin(t * f.sx + i) * 0.12);
+        const y = heroH * (f.by + Math.cos(t * f.sy + i * 2) * 0.10);
+        const radius = Math.min(heroW, heroH) * f.r;
+
+        const grad = heroCtx.createRadialGradient(x, y, 0, x, y, radius);
+        grad.addColorStop(0, `rgba(${f.color}, ${f.alpha})`);
+        grad.addColorStop(0.5, `rgba(${f.color}, ${f.alpha * 0.4})`);
+        grad.addColorStop(1, 'rgba(5, 6, 11, 0)');
+
+        heroCtx.fillStyle = grad;
+        heroCtx.beginPath();
+        heroCtx.arc(x, y, radius, 0, Math.PI * 2);
+        heroCtx.fill();
+      });
+
+      requestAnimationFrame(renderHeroCanvas);
     }
-    document.getElementById('modalFormatText').textContent = p.format;
-    document.getElementById('modalTitle').textContent = p.title;
-    document.getElementById('modalDesc').textContent = p.desc;
-    document.getElementById('modalIncludes').innerHTML =
-      p.includes.map(i => `<li>${i}</li>`).join('');
-    document.getElementById('modalPrice').textContent = p.price;
-    buyBtn.href = p.checkout;
-    lastFocus = document.activeElement;
-    backdrop.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    document.getElementById('modalClose').focus();
-  }
+    renderHeroCanvas();
 
-  function closeModal(){
-    backdrop.classList.remove('open');
-    document.body.style.overflow = '';
-    if (lastFocus) lastFocus.focus();
-  }
+    /* ==========================================================================
+       2. SIMULATED SYSTEM PREVIEW ON VIDEO MOCKUP CANVAS
+       ========================================================================== */
+    const simCanvas = document.getElementById('systemSimCanvas');
+    const simCtx = simCanvas.getContext('2d');
+    let simW, simH;
 
-  document.querySelectorAll('.card[data-product]').forEach(card => {
-    card.addEventListener('click', () => openModal(card.dataset.product));
-  });
-  document.getElementById('modalClose').addEventListener('click', closeModal);
-  backdrop.addEventListener('click', e => { if (e.target === backdrop) closeModal(); });
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && backdrop.classList.contains('open')) closeModal();
-  });
+    function resizeSimCanvas() {
+      if (!simCanvas) return;
+      simW = simCanvas.width = simCanvas.offsetWidth || 800;
+      simH = simCanvas.height = simCanvas.offsetHeight || 450;
+    }
+    window.addEventListener('resize', resizeSimCanvas);
+    resizeSimCanvas();
 
-  /* ============ MENU MOBILE ============ */
-  const navToggle = document.getElementById('navToggle');
-  navToggle.addEventListener('click', () => {
-    const open = document.body.classList.toggle('nav-open');
-    navToggle.setAttribute('aria-expanded', open);
-  });
-  document.querySelectorAll('#mainnav a').forEach(a => {
-    a.addEventListener('click', () => {
-      document.body.classList.remove('nav-open');
-      navToggle.setAttribute('aria-expanded', 'false');
-    });
-  });
+    let simTick = 0;
+    function renderSimCanvas() {
+      simTick++;
+      if (!simCtx || !simW) return;
+      simCtx.fillStyle = '#06080F';
+      simCtx.fillRect(0, 0, simW, simH);
 
-  /* ============ FORMULÁRIOS DE CAPTURA ============
-     Demonstração local. Em produção, aponte o form para sua ferramenta
-     (ConvertKit, Brevo, Mailchimp, Google Forms...) e remova este handler. */
-  document.querySelectorAll('[data-lead-form]').forEach(form => {
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      form.querySelector('input[type=email]').style.display = 'none';
-      form.querySelector('button[type=submit]').style.display = 'none';
-      form.querySelector('.lead-success').style.display = 'block';
-    });
-  });
-</script>
+      // Draw subtle UI grid / Dashboard wireframe
+      simCtx.strokeStyle = 'rgba(245, 247, 250, 0.07)';
+      simCtx.lineWidth = 1;
 
+      // Header bar
+      simCtx.strokeRect(20, 20, simW - 40, 40);
+      simCtx.fillStyle = 'rgba(163, 230, 53, 0.12)';
+      simCtx.fillRect(24, 24, 140, 32);
+
+      // Left sidebar
+      simCtx.strokeRect(20, 75, 180, simH - 95);
+
+      // Main content cards
+      const mainW = simW - 230;
+      simCtx.strokeRect(215, 75, mainW * 0.65, 130);
+      simCtx.strokeRect(215 + mainW * 0.68, 75, mainW * 0.32, 130);
+      simCtx.strokeRect(215, 220, mainW, simH - 240);
+
+      // Animated pulsing wave inside dashboard
+      simCtx.beginPath();
+      simCtx.strokeStyle = '#A3E635';
+      simCtx.lineWidth = 2.5;
+      for (let x = 230; x < 230 + mainW * 0.60; x += 6) {
+        const norm = (x - 230) / (mainW * 0.60);
+        const y = 145 + Math.sin(norm * 8 + simTick * 0.05) * 22 * norm;
+        if (x === 230) simCtx.moveTo(x, y);
+        else simCtx.lineTo(x, y);
+      }
+      simCtx.stroke();
+
+      // Radar pulse point
+      const pulseX = 230 + (simTick * 2) % (mainW * 0.58);
+      const pulseY = 145 + Math.sin((pulseX - 230) / (mainW * 0.60) * 8 + simTick * 0.05) * 22 * ((pulseX - 230)/(mainW * 0.60));
+      simCtx.fillStyle = '#A3E635';
+      simCtx.beginPath();
+      simCtx.arc(pulseX, pulseY, 5, 0, Math.PI * 2);
+      simCtx.fill();
+
+      requestAnimationFrame(renderSimCanvas);
+    }
+    renderSimCanvas();
+
+    // Video play trigger scroll to offer or interactive toggle
+    const playTrigger = document.getElementById('videoPlayTrigger');
+    if (playTrigger) {
+      playTrigger.addEventListener('click', () => {
+        const timeEl = document.getElementById('videoTime');
+        if (timeEl) timeEl.textContent = '03:15 / 04:15 [REPRODUZINDO]';
+        playTrigger.querySelector('.play-label').textContent = 'Visualizando Ecossistema A90';
+      });
+    }
+
+    /* ==========================================================================
+       3. SCROLL-CHOREOGRAPHED PROGRESS CURVE (STAGE 3 CANVAS)
+       ========================================================================== */
+    const curveCanvas = document.getElementById('curveCanvas');
+    const curveCtx = curveCanvas.getContext('2d');
+    const readoutEl = document.getElementById('readoutValue');
+    const phaseLabel = document.getElementById('plotPhaseLabel');
+    const stepRows = document.querySelectorAll('.curve-step-row');
+
+    function drawProgressCurve(progress) {
+      if (!curveCtx) return;
+      const w = curveCanvas.width;
+      const h = curveCanvas.height;
+      curveCtx.clearRect(0, 0, w, h);
+
+      const padX = 30;
+      const padY = 30;
+      const plotW = w - padX * 2;
+      const plotH = h - padY * 2;
+
+      // Base piecewise curve points (Simulating study retention curve)
+      const points = [
+        { x: 0.0, y: 0.85 },
+        { x: 0.2, y: 0.68 },
+        { x: 0.4, y: 0.52 },
+        { x: 0.7, y: 0.28 },
+        { x: 1.0, y: 0.12 }
+      ];
+
+      function getYAtX(nx) {
+        for (let i = 0; i < points.length - 1; i++) {
+          if (nx >= points[i].x && nx <= points[i+1].x) {
+            const segT = (nx - points[i].x) / (points[i+1].x - points[i].x);
+            return points[i].y + (points[i+1].y - points[i].y) * (segT * segT * (3 - 2 * segT));
+          }
+        }
+        return points[points.length - 1].y;
+      }
+
+      // 1. Draw base faint curve
+      curveCtx.beginPath();
+      curveCtx.strokeStyle = 'rgba(245, 247, 250, 0.22)';
+      curveCtx.lineWidth = 1.8;
+      for (let px = 0; px <= plotW; px += 4) {
+        const nx = px / plotW;
+        const ny = getYAtX(nx);
+        const x = padX + px;
+        const y = padY + ny * plotH;
+        if (px === 0) curveCtx.moveTo(x, y);
+        else curveCtx.lineTo(x, y);
+      }
+      curveCtx.stroke();
+
+      // 2. Draw traveled section in electric lime
+      const currentX = Math.max(0, Math.min(1, progress));
+      const traveledW = currentX * plotW;
+
+      curveCtx.beginPath();
+      curveCtx.strokeStyle = '#A3E635';
+      curveCtx.lineWidth = 2.8;
+      curveCtx.shadowColor = 'rgba(163, 230, 53, 0.6)';
+      curveCtx.shadowBlur = 12;
+
+      let endX = padX;
+      let endY = padY + getYAtX(0) * plotH;
+
+      for (let px = 0; px <= traveledW; px += 3) {
+        const nx = px / plotW;
+        const ny = getYAtX(nx);
+        endX = padX + px;
+        endY = padY + ny * plotH;
+        if (px === 0) curveCtx.moveTo(endX, endY);
+        else curveCtx.lineTo(endX, endY);
+      }
+      curveCtx.stroke();
+      curveCtx.shadowBlur = 0; // Reset shadow
+
+      // 3. Pulsing marker at endpoint
+      const pulseSize = 6 + Math.sin(Date.now() * 0.008) * 2;
+      curveCtx.beginPath();
+      curveCtx.fillStyle = '#A3E635';
+      curveCtx.arc(endX, endY, pulseSize, 0, Math.PI * 2);
+      curveCtx.fill();
+
+      // Outer ring
+      curveCtx.beginPath();
+      curveCtx.strokeStyle = 'rgba(163, 230, 53, 0.4)';
+      curveCtx.lineWidth = 1.5;
+      curveCtx.arc(endX, endY, pulseSize + 5, 0, Math.PI * 2);
+      curveCtx.stroke();
+
+      // 4. Update numerical readout and process rows
+      const currentVal = Math.round(48 + currentX * 42); // 48% to 90%
+      if (readoutEl) readoutEl.textContent = `${currentVal}%`;
+
+      const stepIndex = Math.min(5, Math.max(1, Math.ceil(currentX * 5)));
+      stepRows.forEach((row, idx) => {
+        if (idx + 1 <= stepIndex) {
+          row.classList.add('active');
+        } else {
+          row.classList.remove('active');
+        }
+      });
+
+      const phaseNames = [
+        'FASE 01: DIAGNÓSTICO DE GAPS',
+        'FASE 02: PRIORIZAÇÃO 80/20',
+        'FASE 03: ENGENHARIA REVERSA',
+        'FASE 04: CADERNO DE ERROS',
+        'FASE 05: CONSOLIDAÇÃO ESPAÇADA'
+      ];
+      if (phaseLabel) {
+        phaseLabel.textContent = phaseNames[Math.min(4, stepIndex - 1)];
+      }
+    }
+
+    /* ==========================================================================
+       4. CONVERGENCE POLAR CANVAS (STAGE 4 CANVAS)
+       ========================================================================== */
+    const convCanvas = document.getElementById('convergenceCanvas');
+    const convCtx = convCanvas ? convCanvas.getContext('2d') : null;
+    let convW, convH;
+
+    function resizeConvCanvas() {
+      if (!convCanvas) return;
+      convW = convCanvas.width = convCanvas.offsetWidth;
+      convH = convCanvas.height = convCanvas.offsetHeight;
+    }
+    window.addEventListener('resize', resizeConvCanvas);
+    resizeConvCanvas();
+
+    let convProgress = 0.5;
+    function drawConvergenceShapes() {
+      if (!convCtx || !convW) return;
+      convCtx.clearRect(0, 0, convW, convH);
+
+      const cx = convW / 2;
+      const cy = convH / 2;
+      const baseScale = 0.72 + convProgress * 0.50; // 0.72 to 1.22
+      const time = Date.now() * 0.001;
+
+      // 3 nested polar loop shapes
+      const loops = [
+        { rBase: 180 * baseScale, s1: 3, s2: 5, amp: 20, alpha: 0.16 },
+        { rBase: 260 * baseScale, s1: 4, s2: 6, amp: 26, alpha: 0.12 },
+        { rBase: 340 * baseScale, s1: 2, s2: 4, amp: 32, alpha: 0.09 }
+      ];
+
+      loops.forEach((lp) => {
+        convCtx.beginPath();
+        for (let angle = 0; angle <= Math.PI * 2; angle += 0.04) {
+          const mod = Math.sin(angle * lp.s1 + time + convProgress * 2) * lp.amp +
+                      Math.cos(angle * lp.s2 - time) * (lp.amp * 0.5);
+          const r = lp.rBase + mod;
+          const x = cx + Math.cos(angle) * r;
+          const y = cy + Math.sin(angle) * r;
+
+          if (angle === 0) convCtx.moveTo(x, y);
+          else convCtx.lineTo(x, y);
+        }
+        convCtx.closePath();
+
+        // Dark to lime gradient fill
+        const grad = convCtx.createRadialGradient(cx, cy, 0, cx, cy, lp.rBase);
+        grad.addColorStop(0, `rgba(163, 230, 53, ${lp.alpha})`);
+        grad.addColorStop(0.7, `rgba(101, 163, 13, ${lp.alpha * 0.4})`);
+        grad.addColorStop(1, 'transparent');
+
+        convCtx.fillStyle = grad;
+        convCtx.fill();
+        convCtx.strokeStyle = `rgba(163, 230, 53, ${lp.alpha * 1.8})`;
+        convCtx.lineWidth = 1.5;
+        convCtx.stroke();
+      });
+
+      requestAnimationFrame(drawConvergenceShapes);
+    }
+    if (convCanvas) drawConvergenceShapes();
+
+    /* ==========================================================================
+       5. SINGLE requestAnimationFrame THROTTLED SCROLL HANDLER
+       ========================================================================== */
+    const heroStage = document.getElementById('heroStage');
+    const heroContent = document.getElementById('heroContent');
+    const revealStage = document.getElementById('revealStage');
+    const curveStage = document.getElementById('curveStage');
+    const convergenceStage = document.getElementById('convergenceStage');
+    const revealOverlay = document.getElementById('revealOverlay');
+    const revealLine = document.getElementById('revealLine');
+
+    let isScrollTicking = false;
+
+    function handleScroll() {
+      const scrollY = window.scrollY;
+      const vh = window.innerHeight;
+
+      // 1. Stage 1 Hero Scroll Lift & Fade
+      if (heroStage && heroContent) {
+        const rect = heroStage.getBoundingClientRect();
+        const stageH = heroStage.offsetHeight - vh;
+        if (stageH > 0) {
+          const p = Math.max(0, Math.min(1, -rect.top / stageH));
+          heroContent.style.setProperty('--hero-scroll-lift', `${p * 52}px`);
+          heroContent.style.setProperty('--hero-scroll-opacity', `${1 - p * 0.85}`);
+        }
+      }
+
+      // 2. Stage 2 Typographic Reveal
+      if (revealStage && revealOverlay) {
+        const rect = revealStage.getBoundingClientRect();
+        const stageH = revealStage.offsetHeight - vh;
+        if (stageH > 0) {
+          const rawP = Math.max(0, Math.min(1, -rect.top / stageH));
+          const p = Math.max(0, Math.min(1, rawP * 1.25));
+          document.documentElement.style.setProperty('--reveal-p', p);
+        }
+      }
+
+      // 3. Stage 3 Curve Tracing
+      if (curveStage) {
+        const rect = curveStage.getBoundingClientRect();
+        const stageH = curveStage.offsetHeight - vh;
+        if (stageH > 0) {
+          const p = Math.max(0, Math.min(1, -rect.top / stageH));
+          drawProgressCurve(p);
+        }
+      }
+
+      // 4. Stage 4 Convergence Scaling
+      if (convergenceStage) {
+        const rect = convergenceStage.getBoundingClientRect();
+        const stageH = convergenceStage.offsetHeight - vh;
+        if (stageH > 0) {
+          convProgress = Math.max(0, Math.min(1, -rect.top / stageH));
+        }
+      }
+
+      isScrollTicking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!isScrollTicking) {
+        requestAnimationFrame(handleScroll);
+        isScrollTicking = true;
+      }
+    }, { passive: true });
+
+    // Initial draw
+    handleScroll();
+  </script>
 </body>
 </html>
