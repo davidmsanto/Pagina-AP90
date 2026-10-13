@@ -265,9 +265,10 @@
   }
 
   .brand-lockup {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 12px;
+    min-height: 44px;
   }
 
   .brand-logo-img {
@@ -780,14 +781,14 @@
   .curve-left-col {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 12px;
   }
 
   .curve-step-row {
     display: flex;
     align-items: flex-start;
-    gap: 20px;
-    padding: 16px 20px;
+    gap: 16px;
+    padding: 12px 18px;
     border-radius: 6px;
     border-left: 2px solid transparent;
     opacity: 0.28;
@@ -1522,34 +1523,705 @@
     gap: 24px;
   }
 
+  .footer-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 6px 4px;
+    transition: color 0.2s ease;
+  }
+
   .footer-links a:hover {
     color: var(--accent-primary);
   }
 
-  /* RESPONSIVE BREAKPOINTS */
+  /* ==========================================================================
+     MOBILE-FIRST RESPONSIVE ARCHITECTURE & TOUCH ACCESSIBILITY
+     ========================================================================== */
+  
+  .table-mobile-hint {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 20px auto 14px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-primary);
+    background: var(--accent-soft);
+    border: 1px solid rgba(163, 230, 53, 0.25);
+    border-radius: 20px;
+    padding: 7px 16px;
+    width: fit-content;
+  }
+
+  .cta-compact {
+    display: none;
+  }
+
+  /* ACCESSIBLE TOUCH TARGETS & PREVENT CLIPPING */
+  a, button, summary, .btn-a90, .btn-ghost {
+    touch-action: manipulation;
+  }
+
+  /* --------------------------------------------------------------------------
+     TABLET & INTERMEDIATE BREAKPOINT (<= 992px)
+     -------------------------------------------------------------------------- */
   @media (max-width: 992px) {
     .nav-links { display: none; }
+    
+    /* Global Section Spacings scaled for screens */
+    .section-pain,
+    .section-anchoring,
+    .section-method,
+    .section-products,
+    .section-results,
+    .section-faq,
+    .section-final-cta {
+      padding: 80px 0;
+    }
+
+    /* Unclip and adapt Stage 3: Study Progress Curve */
+    .stage-curve {
+      height: auto;
+      min-height: auto;
+      padding: 80px 0 60px;
+      position: relative;
+    }
+
+    .stage-curve .sticky-viewport {
+      position: relative;
+      height: auto;
+      padding: 0;
+      overflow: visible;
+      display: block;
+    }
+
+    .curve-split-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .curve-left-col {
+      width: 100%;
+    }
+
+    .curve-right-col {
+      width: 100%;
+    }
+
     .pain-cards-grid { grid-template-columns: 1fr; }
-    .authority-stats-band { grid-template-columns: 1fr 1fr; }
+    .authority-stats-band {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 30px 24px;
+      gap: 24px;
+    }
     .stat-block:nth-child(2) { border-right: none; }
-    .curve-split-grid { grid-template-columns: 1fr; }
-    .pillars-grid { grid-template-columns: 1fr 1fr; }
+    .pillars-grid { grid-template-columns: repeat(2, 1fr); }
     .products-grid-showcase { grid-template-columns: 1fr; }
     .bonus-showcase-grid { grid-template-columns: 1fr; }
-    .pizza-grid { grid-template-columns: 1fr; }
+    .pizza-grid { grid-template-columns: 1fr; gap: 24px; }
     .transformation-grid { grid-template-columns: 1fr; }
   }
 
-  @media (max-width: 600px) {
-    .container { padding: 0 18px; }
-    .hero-content { padding-top: 80px; }
-    .authority-stats-band { grid-template-columns: 1fr; }
-    .stat-block { border-right: none; border-bottom: 1px solid var(--border-subtle); padding-bottom: 16px; }
-    .pillars-grid { grid-template-columns: 1fr; }
-    .product-box { grid-template-columns: 1fr; }
-    .product-box-cover { height: 200px; min-height: auto; }
-    .offer-main-card { padding: 40px 20px; }
-    .pricing-current { font-size: 52px; }
+  /* --------------------------------------------------------------------------
+     MOBILE PHONES & SMALL TABLETS (<= 768px)
+     -------------------------------------------------------------------------- */
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 20px;
+    }
+
+    /* Typography Clamps */
+    .headline-display {
+      letter-spacing: -0.04em;
+    }
+
+    .hero-headline {
+      font-size: clamp(23px, 6.2vw, 36px);
+      line-height: 1.22;
+      margin: 18px 0 14px;
+    }
+
+    .hero-subheadline {
+      font-size: 14.5px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .pain-title,
+    .offer-title,
+    .final-headline {
+      font-size: clamp(22px, 5.8vw, 32px);
+      line-height: 1.25;
+    }
+
+    .section-tag {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      margin-bottom: 8px;
+    }
+
+    /* Section Paddings scaled for comfort and rhythm */
+    .section-pain,
+    .section-anchoring,
+    .section-method,
+    .section-products,
+    .section-results,
+    .section-faq,
+    .section-final-cta {
+      padding: 64px 0 52px;
+    }
+
+    /* Hero Section */
+    .stage-hero {
+      padding-top: calc(72px + 28px);
+      padding-bottom: 60px;
+      min-height: auto;
+    }
+
+    .hero-content {
+      padding: 0 6px;
+    }
+
+    .hero-ctas-group {
+      flex-direction: column;
+      width: 100%;
+      gap: 12px;
+    }
+
+    .btn-a90,
+    .btn-ghost {
+      width: 100%;
+      min-height: 52px;
+      padding: 16px 20px;
+      font-size: 13.5px;
+      text-align: center;
+      border-radius: 6px;
+    }
+
+    .security-microtext {
+      font-size: 11px;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* Video HUD Mockup */
+    .hero-media-showcase {
+      margin-top: 26px;
+      border-radius: 10px;
+      max-height: 280px;
+    }
+
+    .video-hud-overlay {
+      padding: 16px 14px;
+    }
+
+    .play-pulse-btn {
+      width: 56px;
+      height: 56px;
+      font-size: 20px;
+    }
+
+    .play-label {
+      font-size: 10.5px;
+      letter-spacing: 0.08em;
+    }
+
+    .video-hud-footer {
+      font-size: 10px;
+    }
+
+    .video-progress-bar-wrap {
+      margin: 0 10px;
+    }
+
+    /* Stage 2 Typographic Reveal */
+    .stage-reveal {
+      height: 180svh;
+    }
+
+    .statement-base-text,
+    .statement-overlay-text {
+      font-size: clamp(22px, 5.8vw, 42px);
+      letter-spacing: -0.04em;
+      line-height: 1.25;
+    }
+
+    .statement-reveal-wrap {
+      padding: 0 14px;
+    }
+
+    .reveal-rule-line {
+      margin: 20px auto 16px;
+      height: 2.5px;
+    }
+
+    .statement-subtext {
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+
+    /* Stage 4 Convergence */
+    .stage-convergence {
+      height: 160svh;
+    }
+
+    .stage-convergence .sticky-viewport {
+      padding: 24px 16px;
+    }
+
+    .convergence-content {
+      padding: 0 8px;
+    }
+
+    .convergence-headline {
+      font-size: clamp(22px, 5.5vw, 34px);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+
+    .convergence-sub {
+      font-size: 13.5px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .convergence-ctas {
+      width: 100%;
+    }
+
+    .convergence-ctas .btn-a90 {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    /* Pain Cards */
+    .pain-card {
+      padding: 26px 20px;
+    }
+
+    /* Comparison Table */
+    .table-mobile-hint {
+      display: inline-flex;
+    }
+
+    .comparison-table-wrap {
+      margin: 18px 0 40px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 14px 16px;
+      font-size: 13px;
+    }
+
+    .comparison-table th {
+      font-size: 10.5px;
+    }
+
+    .price-a90 {
+      font-size: 18px;
+    }
+
+    /* Pizza Metaphor Box */
+    .pizza-metaphor-box {
+      padding: 28px 18px;
+      border-radius: 10px;
+    }
+
+    .pizza-card {
+      padding: 22px 18px;
+    }
+
+    .pizza-card h3 {
+      font-size: 18px;
+    }
+
+    .pizza-price-tag {
+      font-size: 24px;
+    }
+
+    .pizza-card ul li {
+      font-size: 13px;
+      padding: 8px 0;
+    }
+
+    /* Pillars */
+    .pillar-card {
+      padding: 22px 18px;
+    }
+
+    .pillar-card h3 {
+      font-size: 16.5px;
+    }
+
+    .pillar-card p {
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    /* Products Showcase */
+    .product-box {
+      grid-template-columns: 1fr;
+    }
+
+    .product-box-cover {
+      height: auto;
+      max-height: 220px;
+      aspect-ratio: 16 / 10;
+    }
+
+    .product-box-body {
+      padding: 22px 18px;
+    }
+
+    .product-box-body h3 {
+      font-size: 18px;
+    }
+
+    .product-box-body p {
+      font-size: 13px;
+      line-height: 1.55;
+      margin-bottom: 14px;
+    }
+
+    .bonus-box {
+      padding: 20px 16px;
+    }
+
+    .bonus-box h4 {
+      font-size: 15px;
+    }
+
+    .bonus-box p {
+      font-size: 12.5px;
+    }
+
+    /* Offer Section & Checkout Card */
+    .section-offer {
+      padding: 80px 0;
+    }
+
+    .offer-main-card {
+      padding: 44px 18px 30px;
+      border-radius: 12px;
+    }
+
+    .offer-badge-tag {
+      font-size: 10.5px;
+      letter-spacing: 0.08em;
+      padding: 6px 16px;
+      max-width: 90%;
+      white-space: normal;
+      line-height: 1.3;
+      top: -14px;
+    }
+
+    .offer-title {
+      margin: 12px 0 10px;
+    }
+
+    .offer-desc {
+      font-size: 13.5px;
+      margin-bottom: 24px;
+    }
+
+    .pricing-old {
+      font-size: 16px;
+    }
+
+    .pricing-current {
+      font-size: clamp(48px, 12vw, 64px);
+    }
+
+    .pricing-installments {
+      font-size: 12.5px;
+    }
+
+    .offer-checklist {
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .offer-checklist li {
+      padding: 10px 12px;
+      font-size: 13px;
+      line-height: 1.45;
+      gap: 10px;
+    }
+
+    .offer-cta-btn {
+      width: 100%;
+      padding: 18px 16px;
+      font-size: 13.5px;
+      min-height: 56px;
+      border-radius: 6px;
+    }
+
+    .guarantee-seal-row {
+      flex-direction: column;
+      gap: 10px;
+      font-size: 11.5px;
+      margin-top: 24px;
+    }
+
+    /* Results (Antes e Depois) */
+    .transform-card {
+      padding: 24px 18px;
+    }
+
+    .transform-card h4 {
+      font-size: 17px;
+      margin-bottom: 14px;
+    }
+
+    .transform-card ul li {
+      font-size: 13px;
+      padding: 9px 0;
+    }
+
+    /* FAQ Accordion */
+    summary.faq-question {
+      padding: 16px 18px;
+      font-size: 14.5px;
+      min-height: 48px;
+    }
+
+    .faq-answer {
+      padding: 0 18px 18px;
+      font-size: 13.5px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 0 30px;
+    }
+
+    .footer-wrap {
+      flex-direction: column;
+      gap: 18px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .footer-links {
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 12px;
+    }
+  }
+
+  /* --------------------------------------------------------------------------
+     COMPACT SMARTPHONES (<= 480px)
+     -------------------------------------------------------------------------- */
+  @media (max-width: 480px) {
+    .container {
+      padding: 0 16px;
+    }
+
+    /* Navbar Compact Mode */
+    .navbar .container {
+      height: 64px;
+      padding: 0 14px;
+      gap: 8px;
+    }
+
+    .brand-logo-img {
+      width: 32px;
+      height: 32px;
+    }
+
+    .brand-title {
+      font-size: 14px;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-sub {
+      display: none;
+    }
+
+    .nav-cta-btn {
+      padding: 8px 12px;
+      font-size: 11px;
+      min-height: 44px;
+      white-space: nowrap;
+    }
+
+    .cta-full {
+      display: none;
+    }
+
+    .cta-compact {
+      display: inline;
+    }
+
+    /* Stage Hero */
+    .stage-hero {
+      padding-top: calc(64px + 22px);
+      padding-bottom: 50px;
+    }
+
+    .mono-badge {
+      font-size: 9.5px;
+      letter-spacing: 0.08em;
+      padding: 5px 10px;
+      max-width: 100%;
+    }
+
+    /* Authority Stats */
+    .authority-stats-band {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 20px 14px;
+      gap: 14px;
+    }
+
+    .stat-number {
+      font-size: 28px;
+    }
+
+    .stat-label {
+      font-size: 9.5px;
+      letter-spacing: 0.1em;
+    }
+
+    /* Curve Process Rows */
+    .curve-step-row {
+      padding: 12px 14px;
+      gap: 12px;
+    }
+
+    .step-num {
+      font-size: 14px;
+    }
+
+    .step-content h4 {
+      font-size: 14.5px;
+    }
+
+    .step-content p {
+      font-size: 12.5px;
+    }
+
+    .curve-plot-box {
+      padding: 18px 14px;
+    }
+
+    .plot-canvas-el {
+      height: 180px;
+    }
+
+    .readout-val {
+      font-size: 30px;
+    }
+
+    /* Pillars */
+    .pillars-grid {
+      grid-template-columns: 1fr;
+    }
+
+    /* Offer Card */
+    .offer-main-card {
+      padding: 40px 14px 26px;
+    }
+
+    .offer-badge-tag {
+      font-size: 9.5px;
+      letter-spacing: 0.06em;
+      padding: 5px 12px;
+    }
+
+    .pricing-current {
+      font-size: 50px;
+    }
+
+    .offer-checklist li {
+      font-size: 12.5px;
+      padding: 9px 10px;
+    }
+  }
+
+  /* --------------------------------------------------------------------------
+     ULTRA COMPACT SCREENS (<= 360px - e.g. iPhone SE 1st gen / Galaxy Fold)
+     -------------------------------------------------------------------------- */
+  @media (max-width: 360px) {
+    .container {
+      padding: 0 12px;
+    }
+
+    .navbar .container {
+      height: 60px;
+      padding: 0 10px;
+      gap: 6px;
+    }
+
+    .brand-title {
+      font-size: 13px;
+    }
+
+    .nav-cta-btn {
+      font-size: 10px;
+      padding: 6px 9px;
+      min-height: 44px;
+    }
+
+    .stage-hero {
+      padding-top: calc(60px + 18px);
+    }
+
+    .hero-headline {
+      font-size: 22px;
+    }
+
+    .authority-stats-band {
+      gap: 10px;
+      padding: 16px 10px;
+    }
+
+    .stat-number {
+      font-size: 24px;
+    }
+
+    .stat-label {
+      font-size: 8.5px;
+    }
+
+    .pizza-metaphor-box {
+      padding: 20px 12px;
+    }
+
+    .pizza-card {
+      padding: 16px 12px;
+    }
+
+    .pizza-price-tag {
+      font-size: 22px;
+    }
+
+    .offer-main-card {
+      padding: 36px 10px 22px;
+    }
+
+    .pricing-current {
+      font-size: 44px;
+    }
+
+    .offer-checklist li {
+      font-size: 12px;
+      padding: 8px;
+    }
+
+    .plot-canvas-el {
+      height: 160px;
+    }
   }
 </style>
 </head>
@@ -1575,7 +2247,7 @@
           <li><a href="#faq">FAQ</a></li>
         </ul>
       </nav>
-      <a href="#oferta" class="btn-a90 nav-cta-btn">Acessar por R$ 57,90</a>
+      <a href="#oferta" class="btn-a90 nav-cta-btn"><span class="cta-full">Acessar por R$ 57,90</span><span class="cta-compact">Garantir Vaga</span></a>
     </div>
   </header>
 
@@ -1822,6 +2494,9 @@
       </div>
 
       <!-- TABELA COMPARATIVA BRUTAL -->
+      <div class="table-mobile-hint">
+        <span>⇄ Deslize para comparar todos os itens</span>
+      </div>
       <div class="comparison-table-wrap">
         <table class="comparison-table">
           <thead>
@@ -2481,8 +3156,22 @@
     const phaseLabel = document.getElementById('plotPhaseLabel');
     const stepRows = document.querySelectorAll('.curve-step-row');
 
+    let currentCurveProgress = 0.48;
+
+    function resizeCurveCanvas() {
+      if (!curveCanvas) return;
+      curveCanvas.width = curveCanvas.offsetWidth || 480;
+      curveCanvas.height = curveCanvas.offsetHeight || 240;
+      if (typeof drawProgressCurve === 'function') {
+        drawProgressCurve(currentCurveProgress);
+      }
+    }
+    window.addEventListener('resize', resizeCurveCanvas);
+    resizeCurveCanvas();
+
     function drawProgressCurve(progress) {
-      if (!curveCtx) return;
+      currentCurveProgress = progress;
+      if (!curveCtx || !curveCanvas) return;
       const w = curveCanvas.width;
       const h = curveCanvas.height;
       curveCtx.clearRect(0, 0, w, h);
@@ -2687,10 +3376,16 @@
       // 3. Stage 3 Curve Tracing
       if (curveStage) {
         const rect = curveStage.getBoundingClientRect();
-        const stageH = curveStage.offsetHeight - vh;
-        if (stageH > 0) {
-          const p = Math.max(0, Math.min(1, -rect.top / stageH));
+        if (window.innerWidth <= 992) {
+          const raw = (vh * 0.7 - rect.top) / (rect.height + vh * 0.2);
+          const p = Math.max(0, Math.min(1, raw));
           drawProgressCurve(p);
+        } else {
+          const stageH = curveStage.offsetHeight - vh;
+          if (stageH > 0) {
+            const p = Math.max(0, Math.min(1, -rect.top / stageH));
+            drawProgressCurve(p);
+          }
         }
       }
 
