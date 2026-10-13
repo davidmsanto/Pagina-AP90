@@ -327,7 +327,7 @@
   }
 
   /* ==========================================================================
-     PINNED SCROLL STAGE 1: CINEMATIC A90 HERO (300svh)
+     CINEMATIC A90 HERO
      ========================================================================== */
   .pinned-stage {
     position: relative;
@@ -335,7 +335,17 @@
   }
 
   .stage-hero {
-    height: 300svh;
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding-top: calc(72px + 44px); /* 116px from top: clear of fixed navbar */
+    padding-bottom: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: var(--bg-primary);
+    overflow: hidden;
   }
 
   .sticky-viewport {
@@ -347,6 +357,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 72px; /* always respect the fixed navbar height */
   }
 
   .hero-canvas {
@@ -375,17 +386,16 @@
     position: relative;
     z-index: 3;
     text-align: center;
-    max-width: 980px;
-    padding: 100px 20px 40px;
-    transform: translateY(calc(var(--hero-scroll-lift, 0px) * -1));
-    opacity: var(--hero-scroll-opacity, 1);
-    transition: transform 0.1s linear, opacity 0.1s linear;
+    max-width: 1000px;
+    width: 100%;
+    padding: 0 20px;
   }
 
   .hero-headline {
-    font-size: clamp(28px, 4.6vw, 54px);
+    font-size: clamp(26px, 4vw, 48px);
     margin: 22px 0 18px;
-    letter-spacing: -0.055em;
+    letter-spacing: -0.05em;
+    line-height: 1.18;
   }
 
   .hero-subheadline {
@@ -1562,74 +1572,72 @@
     </div>
   </header>
 
-  <!-- ==================== PINNED SCROLL STAGE 1: CINEMATIC HERO ==================== -->
-  <section class="pinned-stage stage-hero" id="heroStage">
-    <div class="sticky-viewport">
-      <canvas id="heroCanvas" class="hero-canvas"></canvas>
-      <div class="hero-grid-overlay"></div>
+  <!-- ==================== CINEMATIC HERO SECTION ==================== -->
+  <section class="stage-hero" id="heroStage">
+    <canvas id="heroCanvas" class="hero-canvas"></canvas>
+    <div class="hero-grid-overlay"></div>
 
-      <div class="container hero-content" id="heroContent">
-        <div class="mono-badge">
-          <span class="dot"></span>
-          <span>O Fim do Estudo Passivo • Método Aprovação 90</span>
-        </div>
-
-        <h1 class="headline-display hero-headline">
-          Você não precisa gastar <span class="accent-green">R$ 3.000 em cursinhos</span> para ter uma preparação de elite e ser aprovado.
-        </h1>
-
-        <p class="hero-subheadline">
-          Descubra o <strong>Ecossistema A90</strong>: o sistema integrado com método de planejamento, engenharia reversa de questões, central inteligente no Notion e IA pelo valor de uma pizza de final de semana.
-        </p>
-
-        <div class="hero-ctas-group">
-          <a href="#oferta" class="btn-a90" id="mainHeroCta">
-            Quero Acessar o Ecossistema Completo por R$ 57,90
-          </a>
-          <a href="#videoShowcase" class="btn-ghost">
-            ▶ Ver Como Funciona na Prática
-          </a>
-        </div>
-
-        <div class="security-microtext">
-          <span>🔒 Pagamento Único</span>
-          <span>⚡ Acesso Imediato</span>
-          <span>🛡️ Garantia Incondicional de 7 Dias</span>
-          <span>📄 Sem Mensalidades</span>
-        </div>
-
-        <!-- VIDEO & MOCKUP SHOWCASE PLAYER -->
-        <div class="hero-media-showcase" id="videoShowcase">
-          <div class="video-top-bar">
-            <div class="window-dots">
-              <span></span><span></span><span></span>
-            </div>
-            <div>A90_ECOSYSTEM_OVERVIEW_V4.MP4 — 4K ULTRA STREAM</div>
-            <div style="color:var(--accent-primary);">● ONLINE</div>
-          </div>
-          <div class="video-mockup-screen" id="videoPlayerBox">
-            <canvas id="systemSimCanvas" class="system-video-canvas"></canvas>
-            <div class="video-interactive-overlay">
-              <div class="video-hud-header">
-                <span class="mono-badge" style="background:rgba(5,6,11,0.8);">MÓDULO: CENTRAL NOTION + ENGENHARIA REVERSA</span>
-                <span style="font-family:var(--font-mono); font-size:11px; color:var(--accent-primary);">FPS: 60 | BUFFER: 100%</span>
-              </div>
-              <div class="video-play-center" id="videoPlayTrigger">
-                <div class="play-pulse-btn">▶</div>
-                <span class="play-label">Apresentação do Ecossistema A90</span>
-              </div>
-              <div class="video-hud-footer">
-                <span id="videoTime">02:44 / 04:15</span>
-                <div class="video-progress-bar-wrap">
-                  <div class="video-progress-fill"></div>
-                </div>
-                <span>4K HD PREVIEW</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
+    <div class="container hero-content" id="heroContent">
+      <div class="mono-badge">
+        <span class="dot"></span>
+        <span>O Fim do Estudo Passivo • Método Aprovação 90</span>
       </div>
+
+      <h1 class="headline-display hero-headline">
+        Você não precisa gastar <span class="accent-green">R$ 3.000 em cursinhos</span> para ter uma preparação de elite e ser aprovado.
+      </h1>
+
+      <p class="hero-subheadline">
+        Descubra o <strong>Ecossistema A90</strong>: o sistema integrado com método de planejamento, engenharia reversa de questões, central inteligente no Notion e IA pelo valor de uma pizza de final de semana.
+      </p>
+
+      <div class="hero-ctas-group">
+        <a href="#oferta" class="btn-a90" id="mainHeroCta">
+          Quero Acessar o Ecossistema Completo por R$ 57,90
+        </a>
+        <a href="#videoShowcase" class="btn-ghost">
+          ▶ Ver Como Funciona na Prática
+        </a>
+      </div>
+
+      <div class="security-microtext">
+        <span>🔒 Pagamento Único</span>
+        <span>⚡ Acesso Imediato</span>
+        <span>🛡️ Garantia Incondicional de 7 Dias</span>
+        <span>📄 Sem Mensalidades</span>
+      </div>
+
+      <!-- VIDEO & MOCKUP SHOWCASE PLAYER -->
+      <div class="hero-media-showcase" id="videoShowcase">
+        <div class="video-top-bar">
+          <div class="window-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <div>A90_ECOSYSTEM_OVERVIEW_V4.MP4 — 4K ULTRA STREAM</div>
+          <div style="color:var(--accent-primary);">● ONLINE</div>
+        </div>
+        <div class="video-mockup-screen" id="videoPlayerBox">
+          <canvas id="systemSimCanvas" class="system-video-canvas"></canvas>
+          <div class="video-interactive-overlay">
+            <div class="video-hud-header">
+              <span class="mono-badge" style="background:rgba(5,6,11,0.8);">MÓDULO: CENTRAL NOTION + ENGENHARIA REVERSA</span>
+              <span style="font-family:var(--font-mono); font-size:11px; color:var(--accent-primary);">FPS: 60 | BUFFER: 100%</span>
+            </div>
+            <div class="video-play-center" id="videoPlayTrigger">
+              <div class="play-pulse-btn">▶</div>
+              <span class="play-label">Apresentação do Ecossistema A90</span>
+            </div>
+            <div class="video-hud-footer">
+              <span id="videoTime">02:44 / 04:15</span>
+              <div class="video-progress-bar-wrap">
+                <div class="video-progress-fill"></div>
+              </div>
+              <span>4K HD PREVIEW</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -2644,16 +2652,8 @@
       const scrollY = window.scrollY;
       const vh = window.innerHeight;
 
-      // 1. Stage 1 Hero Scroll Lift & Fade
-      if (heroStage && heroContent) {
-        const rect = heroStage.getBoundingClientRect();
-        const stageH = heroStage.offsetHeight - vh;
-        if (stageH > 0) {
-          const p = Math.max(0, Math.min(1, -rect.top / stageH));
-          heroContent.style.setProperty('--hero-scroll-lift', `${p * 52}px`);
-          heroContent.style.setProperty('--hero-scroll-opacity', `${1 - p * 0.85}`);
-        }
-      }
+      // 1. Stage 1 Hero - stable layout without vertical lift
+      // (Hero flows naturally with clean navbar clearance)
 
       // 2. Stage 2 Typographic Reveal
       if (revealStage && revealOverlay) {
