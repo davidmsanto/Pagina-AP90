@@ -43,6 +43,10 @@ src="https://www.facebook.com/tr?id=2748725502210010&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 
+<!-- ============ WISTIA VIDEO PLAYER SCRIPTS ============ -->
+<script src="https://fast.wistia.com/player.js" async></script>
+<script src="https://fast.wistia.com/embed/6bizas3a7r.js" async type="module"></script>
+
 <style>
   /* ==========================================================================
      A90 DESIGN SYSTEM & DESIGN TOKENS
@@ -507,20 +511,21 @@ src="https://www.facebook.com/tr?id=2748725502210010&ev=PageView&noscript=1"
 
   .video-mockup-screen {
     position: relative;
-    aspect-ratio: 16 / 9;
     background: #040508;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     overflow: hidden;
+    width: 100%;
   }
 
-  .video-mockup-screen iframe {
-    position: absolute;
-    inset: 0;
+  wistia-player[media-id='6bizas3a7r']:not(:defined) {
+    background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/6bizas3a7r/swatch');
+    display: block;
+    filter: blur(5px);
+    padding-top: 177.78%;
+  }
+
+  wistia-player {
+    display: block;
     width: 100%;
-    height: 100%;
-    border: none;
   }
 
   /* SIMULATED SYSTEM PREVIEW ON VIDEO SCREEN */
@@ -2521,7 +2526,7 @@ src="https://www.facebook.com/tr?id=2748725502210010&ev=PageView&noscript=1"
       </div>
 
       <!-- PLAYER DE VÍDEO DA DEMONSTRAÇÃO PRÁTICA -->
-      <div class="hero-media-showcase" id="videoShowcase" style="max-width: 860px; margin: 32px auto 0;">
+      <div class="hero-media-showcase" id="videoShowcase" style="max-width: 380px; margin: 32px auto 0;">
         <div class="video-top-bar">
           <div class="window-dots">
             <span></span><span></span><span></span>
@@ -2532,13 +2537,7 @@ src="https://www.facebook.com/tr?id=2748725502210010&ev=PageView&noscript=1"
           </div>
         </div>
         <div class="video-mockup-screen" id="videoPlayerBox">
-          <iframe 
-            src="https://drive.google.com/file/d/1mlpoKl5PqcMVXKTWxMBVE1qlSqrYdQ4b/preview" 
-            title="Demonstração Prática do Ecossistema A90"
-            allow="autoplay; fullscreen" 
-            allowfullscreen 
-            loading="lazy">
-          </iframe>
+          <wistia-player media-id="6bizas3a7r" aspect="0.5625"></wistia-player>
         </div>
       </div>
 
@@ -3180,8 +3179,28 @@ src="https://www.facebook.com/tr?id=2748725502210010&ev=PageView&noscript=1"
         const label = playTrigger.querySelector('.play-label');
         if (label) label.textContent = '● REPRODUZINDO';
         trackEvent('InteractDemoSimulator', { action: 'toggle_simulation' });
+        const wistiaEl = document.querySelector('wistia-player');
+        if (wistiaEl && typeof wistiaEl.play === 'function') {
+          wistiaEl.play();
+        }
       });
     }
+
+    window._wq = window._wq || [];
+    window._wq.push({
+      id: '6bizas3a7r',
+      onReady: function(video) {
+        video.bind('play', function() {
+          trackEvent('InteractDemoSimulator', { action: 'play_wistia_video' });
+          const label = document.querySelector('#videoPlayTrigger .play-label');
+          if (label) label.textContent = '● REPRODUZINDO';
+        });
+        video.bind('pause', function() {
+          const label = document.querySelector('#videoPlayTrigger .play-label');
+          if (label) label.textContent = '● PAUSADO';
+        });
+      }
+    });
 
     // IntersectionObserver to pause/resume canvas animations when visible
     if ('IntersectionObserver' in window) {
